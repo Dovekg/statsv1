@@ -1,0 +1,1 @@
+点击链接重置密码： <a href="{{ $link = url('password/reset', $token).'?email='.urlencode($user->getEmailForPasswordReset()) }}"> {{ $link }} </a>，如果不能点击，请复制到浏览器地址栏打开！
