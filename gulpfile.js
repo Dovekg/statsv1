@@ -14,8 +14,8 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     mix.sass('app.scss','/resources/assets/css/app.css')
     .styles([
-    	'app.css',
 		'icons/icomoon/styles.css',
+		'bootstrap.min.css',
 		'core.min.css',
 		'components.min.css',
 		'colors.min.css',
