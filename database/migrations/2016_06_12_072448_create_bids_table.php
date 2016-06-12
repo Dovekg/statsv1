@@ -14,7 +14,7 @@ class CreateBidsTable extends Migration
     {
         Schema::create('bids', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('task_id');
+            $table->string('task_id');
             $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
             $table->integer('bid_user_id');
             $table->integer('price')->nullable();

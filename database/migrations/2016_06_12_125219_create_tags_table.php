@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTaskTagsTable extends Migration
+class CreateTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateTaskTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('task_tags', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('task_id');
+            $table->string('task_id');
             $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
             $table->text('tag');
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateTaskTagsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('task_tags');
+        Schema::drop('tags');
     }
 }
