@@ -18,12 +18,12 @@ class ProfilesController extends Controller
 
     public function show()
     {
-        return view('Dashboard.profiles.show');
+        return view('dashboard.profiles.show');
     }
 
     public function change()
     {
-        return view('Dashboard.profiles.change');
+        return view('dashboard.profiles.change');
     }
     
 
