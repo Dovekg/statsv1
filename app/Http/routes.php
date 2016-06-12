@@ -36,16 +36,3 @@ Route::group(['middleware' => 'web'], function() {
 	});
 });
 
-
-// Route::get('/test', function () {
-// 	return view('auth.passwords.reset');
-// });
-
-
-//Route::group(['middleware' => 'web'], function() {
-//	Route::auth();
-//	Route::get('/download/example/{path}', ['as' => 'download.example', 'uses' => 'TasksController@downloadExample' ]);
-//	Route::post('/tasks/{id}/file', 'TasksController@uploadFile');
-//	Route::resource('tasks', 'TasksController');
-//});
-

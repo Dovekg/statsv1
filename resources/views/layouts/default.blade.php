@@ -11,12 +11,12 @@
     <title>scistats -- 你的科学统计师</title>
 
     <!-- Bootstrap core CSS -->
-    <!-- <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/swiper.min.css">
-    <link rel="stylesheet" href="/css/extra.css"> -->
-    <link rel="stylesheet" type="text/css" href="/css/all.css">
     <link rel="stylesheet" href="/css/extra.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/extra.css"> -->
     <!--[if lt IE 9]>
     <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
