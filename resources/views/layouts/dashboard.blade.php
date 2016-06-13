@@ -46,9 +46,9 @@
 						</a>
 
 						<ul class="dropdown-menu dropdown-menu-right">
-							<li><a href="#"><i class="icon-user-plus"></i>个人资料</a></li>
+							<li><a href="{{ route('profile.show') }}"><i class="icon-user-plus"></i>个人资料</a></li>
 							<li class="divider"></li>
-							<li><a href="{{ route('profile.show') }}"><i class="icon-cog5"></i> 账户修改</a></li>
+							<li><a href="{{ route('profile.change') }}"><i class="icon-cog5"></i> 账户修改</a></li>
 							<li><a href="/logout"><i class="icon-switch2"></i> 登出</a></li>
 						</ul>
 					</li>
@@ -69,6 +69,14 @@
 
 		<!-- Page content -->
 		<div class="page-content">
+
+			@if(Auth::user()->is('admin'))
+				@include('partials.admin_sidebar')
+			@elseif(Auth::user()->is('analyst'))
+				@include('partials.analyst_sidebar')
+			@else
+				@include('partials.sidebar')
+			@endif
 
 			@yield('content')
 

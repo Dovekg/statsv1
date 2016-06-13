@@ -5,9 +5,12 @@ namespace App;
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Avatar;
+use Bican\Roles\Traits\HasRoleAndPermission;
+use Bican\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasRoleAndPermissionContract
 {
+    use HasRoleAndPermission;
     /**
      * The attributes that are mass assignable.
      *
@@ -30,6 +33,11 @@ class User extends Authenticatable
     public function getAvatarAttribute()
     {
         return Avatar::create(pinyin_abbr($this->name))->toBase64();
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany('App\Task');
     }
 
     public function comments()

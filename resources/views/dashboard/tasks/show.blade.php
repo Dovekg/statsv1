@@ -22,36 +22,42 @@
 @stop
 @section('content')
     <!-- Task overview -->
-    @include('partials.sidebar')
     <div class="panel panel-flat">
         <div class="panel-heading mt-5">
             <h5 class="panel-title">#{{ $task->id }}</h5>
             <div class="heading-elements">
+                <span class="heading-text position-left">期限： <span class="text-bold text-danger-600">{{ $task->time }}</span></span>
+                <span class="heading-text position-left">预算： <span class="text-bold text-danger-600">${{ $task->pay }}</span></span>
+
                 @if($task->closed)
-                    <span class="btn bg-grey-400 btn-sm btn-labeled btn-labeled-right heading-btn">需求关闭 <b><i class="icon-checkmark-circle"></i></b></span>
+                    <span class="btn bg-grey-400 btn-sm btn-labeled btn-labeled-right heading-btn">需求关闭 <b><i class="icon-cancel-circle2"></i></b></span>
                 @elseif($task->completed)
-                    <span class="btn bg-success-400 btn-sm btn-labeled btn-labeled-right heading-btn">需求完成 <b><i class="icon-checkmark-circle"></i></b></span>
+                    <span class="btn bg-success-400 btn-sm btn-labeled btn-labeled-right heading-btn">需求完成 <b><i class="icon-minus-circle2"></i></b></span>
                 @elseif($task->claimed)
                     <span class="btn bg-grey-400 btn-sm btn-labeled btn-labeled-right heading-btn">已被认领 <b><i class="icon-checkmark-circle"></i></b></span>
-                @else
-                    {!! Form::open(['route' => ['dashboard.tasks.claim', $task->id], 'method' => 'patch']) !!}
+                @elseif(Auth::user()->is('analyst'))
+                    {!! Form::open(['route' => ['dashboard.tasks.claim', $task->id], 'method' => 'patch', 'class' => ' display-inline-block']) !!}
                     <button type="submit" onclick="return confirm('确认认领？')" class="btn bg-teal-400 btn-sm btn-labeled btn-labeled-right heading-btn">认领
                         <b>
                             <i class="icon-checkmark-circle2"></i>
                         </b>
                     </button>
                     {!! Form::close() !!}
+                @else
+                    <span class="btn bg-success-400 btn-sm btn-labeled btn-labeled-right heading-btn">认领中<b><i class="icon-checkmark-circle"></i></b></span>
                 @endif
             </div>
         </div>
 
         <div class="panel-body">
             <h6 class="text-semibold">简介</h6>
-            @if($task->description)
-            <p class="content-group">{{ $task->description }}</p>
-            @else
-                <p class="content-group">没有提供数据介绍</p>
-            @endif
+            <p class="content-group">
+                @if($task->description)
+                    {{ $task->description }}
+                @else
+                    没有提供数据介绍
+                @endif
+            </p>
 
             <h6 class="text-semibold">所需方法</h6>
             <p class="content-group-lg">
@@ -60,25 +66,35 @@
                         <span class="badge bg-primary-400">{{ $tag->tag }}</span>
                     @endforeach
                 @else
-                <p class="content-group">没有提供方法要求</p>
+                    没有提供方法要求
                 @endif
             </p>
 
-            <h6 class="text-semibold">数据（右键另存为）</h6>
-            <p class="content-group">
-                @if($task->data_path)
-                    <a href="{{ route('download.data', $task->data_path) }}" class="btn btn-sm bg-teal"><i class="icon-file-download">&nbsp;</i>{{ $task->data_ori_filename }}</a>
-                @else
-                    <p class="content-group">没有提供数据</p>
-                @endif
-            </p>
-
+                <h6 class="text-semibold">数据（右键另存为）</h6>
+                <p class="content-group">
+                    @if($task->data_path)
+                        <a href="{{ route('download.data', $task->data_path) }}" class="btn btn-sm bg-teal"><i class="icon-file-download">&nbsp;</i>{{ $task->data_ori_filename }}</a>
+                    @else
+                        没有提供数据
+                    @endif
+                    </p>
+            @role('admin|analyst')
             @include('partials.bids')
+            @endrole
 
         </div>
 
         <div class="panel-footer">
             <div class="heading-elements">
+                @if(!$task->completed && Auth::user()->id == $task->claimed_user_id)
+                {!! Form::open(['route' => ['dashboard.tasks.complete', $task->id], 'method' => 'patch', 'class' => ' display-inline-block']) !!}
+                <button type="submit" onclick="return confirm('确认完成？')" class="btn bg-teal-400 btn-sm btn-labeled btn-labeled-right heading-btn">分析完成
+                    <b>
+                        <i class="icon-checkmark-circle2"></i>
+                    </b>
+                </button>
+                {!! Form::close() !!}
+                @endif
                 <ul class="list-inline list-inline-condensed heading-text pull-right">
                     <li><button href="{{ route('dashboard.tasks.edit', $task->id) }}" class="btn btn-flat text-info">修改 <b><i class="icon-compose"></i></b></button></li>
                     @if(!$task->claimed)
@@ -119,4 +135,4 @@
     </div>
     <!-- /task overview -->
     @include('partials.comments')
-    @stop
+@stop

@@ -21,83 +21,81 @@
 	</div>
 @stop
 @section('content')
+	<!-- Main content -->
+	<div class="content-wrapper">
 
-	@include('partials.sidebar')
-			<!-- Main content -->
-			<div class="content-wrapper">
-
-				<!-- Support tickets -->
-				<div class="panel panel-flat">
-					<div class="panel-heading">
-						<h6 class="panel-title">所有项目</h6>
-						<div class="heading-elements">
-							<a href="{{ route('dashboard.tasks.create') }}" class="btn bg-teal-400 btn-sm btn-labeled btn-labeled-right heading-btn">创建新需求<b><i class="icon-pencil6"></i></b></a>
-						</div>
-					</div>
-
-					<div class="table-responsive">
-						<table class="table table-xlg text-nowrap">
-							<tbody>
-								<tr>
-									<td class="col-md-3">
-
-										<div class="media-left">
-											<div class="text-center">
-												<h4 class="text-semibold no-margin">
-													{{ $all }}
-													<small class="display-block text-size-mini no-margin">项目总个数</small>
-												</h4>
-
-											</div>
-										</div>
-									</td>
-
-									<td class="col-md-3">
-										<div class="media-left media-middle">
-											<a href="#" class="btn border-info-400 text-info-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-alarm"></i></a>
-										</div>
-
-										<div class="media-left">
-											<h5 class="text-semibold no-margin">
-												{{ $process }} <small class="display-block no-margin">进行中</small>
-											</h5>
-										</div>
-									</td>
-
-									<td class="col-md-3">
-										<div class="media-left media-middle">
-											<a href="#" class="btn border-success-400 text-success-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-checkmark3"></i></a>
-										</div>
-
-										<div class="media-left">
-											<h5 class="text-semibold no-margin">
-												{{ $completed }} <small class="display-block no-margin">已完成</small>
-											</h5>
-										</div>
-									</td>
-
-									<td class="col-md-3">
-										<div class="media-left media-middle">
-											<a href="#" class="btn border-danger-400 text-danger-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-cross2"></i></a>
-										</div>
-
-										<div class="media-left">
-											<h5 class="text-semibold no-margin">
-												{{ $closed }} <small class="display-block no-margin">已废止</small>
-											</h5>
-										</div>
-									</td>
-
-								</tr>
-							</tbody>
-						</table>	
-					</div>
-
-
+		<!-- Support tickets -->
+		<div class="panel panel-flat">
+			<div class="panel-heading">
+				<h6 class="panel-title">所有项目</h6>
+				<div class="heading-elements">
+					<a href="{{ route('dashboard.tasks.create') }}" class="btn bg-teal-400 btn-sm btn-labeled btn-labeled-right heading-btn">创建新需求<b><i class="icon-pencil6"></i></b></a>
 				</div>
-				<!-- /support tickets -->
-
 			</div>
-			<!-- /main content -->
+
+			<div class="table-responsive">
+				<table class="table table-xlg text-nowrap">
+					<tbody>
+					<tr>
+						<td class="col-md-3">
+
+							<div class="media-left">
+								<div class="text-center">
+									<h4 class="text-semibold no-margin">
+										{{ $all }}
+										<small class="display-block text-size-mini no-margin">项目总个数</small>
+									</h4>
+
+								</div>
+							</div>
+						</td>
+
+						<td class="col-md-3">
+							<div class="media-left media-middle">
+								<a href="#" class="btn border-info-400 text-info-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-alarm"></i></a>
+							</div>
+
+							<div class="media-left">
+								<h5 class="text-semibold no-margin">
+									{{ $process }} <small class="display-block no-margin">进行中</small>
+								</h5>
+							</div>
+						</td>
+
+						<td class="col-md-3">
+							<div class="media-left media-middle">
+								<a href="#" class="btn border-success-400 text-success-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-checkmark3"></i></a>
+							</div>
+
+							<div class="media-left">
+								<h5 class="text-semibold no-margin">
+									{{ $completed }} <small class="display-block no-margin">已完成</small>
+								</h5>
+							</div>
+						</td>
+
+						<td class="col-md-3">
+							<div class="media-left media-middle">
+								<a href="#" class="btn border-danger-400 text-danger-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-cross2"></i></a>
+							</div>
+
+							<div class="media-left">
+								<h5 class="text-semibold no-margin">
+									{{ $closed }} <small class="display-block no-margin">已废止</small>
+								</h5>
+							</div>
+						</td>
+
+					</tr>
+					</tbody>
+				</table>
+			</div>
+
+
+		</div>
+		<!-- /support tickets -->
+
+	</div>
+	<!-- /main content -->
 
 @stop

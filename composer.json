@@ -11,7 +11,8 @@
         "laravelcollective/html": "5.2.*",
         "laravolt/avatar": "^1.4",
         "overtrue/laravel-pinyin": "~3.0",
-        "uxweb/sweet-alert": "^1.1"
+        "uxweb/sweet-alert": "^1.1",
+        "bican/roles": "^2.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

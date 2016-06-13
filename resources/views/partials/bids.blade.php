@@ -1,19 +1,30 @@
 <h6 class="text-semibold">竞价</h6>
+@if(!$task->claimed)
+<div class="content-group-sm">
+    <p class="text-semibold">剩余时间：24小时之内完成报价</p>
+    <div class="progress progress-xs">
+        <div class="progress-bar progress-bar-info progress-bar-striped active" style="width: {{ $percent }}%">
+            <span class="sr-only">{{ $percent }}% Complete</span>
+        </div>
+    </div>
+</div>
+@endif
 <!-- Daily sales -->
 <div class="panel panel-flat">
     <div class="panel-heading">
-        <h6 class="panel-title">需求限定条件
-            @if($task->closed || $task->completed || $task->claimed )
-                <span class="btn btn-sm bg-grey ml-10"><i class="icon-coin-dollar">&nbsp;</i>限制出价</span>
-            @else
-                <span type="button" class="btn btn-sm bg-primary ml-10" data-toggle="modal" data-target="#modal_add_bid"><i class="icon-coin-dollar"></i>出价</span>
-            @endif
-        </h6>
+        <h6 class="panel-title">
+            需求限定条件
 
+        </h6>
         <div class="heading-elements">
-            <span class="heading-text position-left">期限： <span class="text-bold text-danger-600">{{ $task->time }}</span></span>
-            <span class="heading-text position-left">预算： <span class="text-bold text-danger-600">${{ $task->pay }}</span></span>
+            <div id="ds-Countdown"></div>
+            @if($task->closed || $task->completed || $task->claimed || $percent == 100)
+                <span class="btn btn-sm bg-grey ml-10"><i class="icon-coin-yen">&nbsp;</i>限制出价</span>
+            @else
+                <span type="button" id="bid-button" class="btn btn-sm bg-primary ml-10" data-toggle="modal" data-target="#modal_add_bid"><i class="icon-coin-yen">&nbsp;</i>出价</span>
+            @endif
         </div>
+
     </div>
 
     <div class="table-responsive">

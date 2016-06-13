@@ -25,8 +25,13 @@ Route::group(['middleware' => 'web'], function() {
 		Route::patch('/tasks/{id}/claim', ['as' => 'dashboard.tasks.claim', 'uses' => 'TasksController@claim']);
 		Route::patch('/tasks/{id}/complete', ['as' => 'dashboard.tasks.complete', 'uses' => 'TasksController@complete']);
 		Route::patch('/tasks/{id}/bid', ['as' => 'dashboard.tasks.bid', 'uses' => 'TasksController@bid']);
+		Route::get('/tasks/claimed', ['as' => 'dashboard.tasks.claimed', 'uses' => 'TasksController@claimed']);
+		Route::get('/tasks/completed', ['as' => 'dashboard.tasks.completed', 'uses' => 'TasksController@completed']);
 		Route::resource('tasks', 'TasksController');
 		Route::resource('comments', 'CommentsController');
+		Route::resource('users', 'UsersController');
+		Route::resource('perms', 'PermsController');
+		Route::resource('roles', 'RolesController');
 	});
 	Route::group(['prefix' => 'profile'], function() {
 		Route::get('/', ['as' => 'profile.show', 'uses' => 'ProfilesController@show']);

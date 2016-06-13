@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Bid;
 use App\Tag;
 use App\Task;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -24,7 +25,10 @@ class TasksController extends Controller
     
     public function index(Task $task)
     {
-        $tasks = $task->where('user_id', Auth::user()->id)->get();
+        if (Auth::user()->is('admin|analyst'))
+            $tasks = $task->all();
+        else
+            $tasks = $task->where('user_id', Auth::user()->id)->get();
         return view('dashboard.tasks.index', compact('tasks'));
     }
 
@@ -68,7 +72,16 @@ class TasksController extends Controller
     public function show($id)
     {
         $task = Task::findOrFail($id);
-        return view('dashboard.tasks.show', compact('task'));
+//        Carbon::now()->timestamp
+        $cent = (Carbon::now()->timestamp- $task->created_at->timestamp) / 86400;
+        if ($cent >= 1) {
+            $percent = 100;
+        } elseif ($cent <=0 ){
+            $percent = 0;
+        } else {
+            $percent = floor($cent*100);
+        }
+        return view('dashboard.tasks.show', compact('task', 'percent'));
     }
     public function downloadData($path, Task $task)
     {
@@ -118,6 +131,24 @@ class TasksController extends Controller
         $request['bid_user_id'] = Auth::user()->id;
         $bid->create($request->all());
         return redirect()->back();
+    }
+
+    public function claimed(Task $task)
+    {
+        if (Auth::user()->is('admin|analyst'))
+            $tasks = $task->where('claimed_user_id', Auth::user()->id)->get();
+        else
+            $tasks = $task->where('user_id', Auth::user()->id)->where('claimed', true)->get();
+        return view('dashboard.tasks.index', compact('tasks'));
+    }
+
+    public function completed(Task $task)
+    {
+        if (Auth::user()->is('admin|analyst'))
+            $tasks = $task->where('claimed_user_id', Auth::user()->id)->where('completed', true)->get();
+        else
+            $tasks = $task->where('user_id', Auth::user()->id)->where('completed', true)->get();
+        return view('dashboard.tasks.index', compact('tasks'));
     }
 
 }

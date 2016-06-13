@@ -22,8 +22,6 @@
     </div>
 @stop
 @section('content')
-
-    @include('partials.sidebar')
     <div class="content-wrapper">
         <div class="panel panel-flat">
             <div class="panel-heading">

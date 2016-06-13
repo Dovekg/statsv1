@@ -20,7 +20,10 @@ class DashboardController extends Controller
 	
     public function index(Task $task)
     {
-        $tasks = $task->where('user_id', Auth::user()->id);
+        if (Auth::user()->is('admin|analyst'))
+            $tasks = $task->all();
+        else
+            $tasks = $task->where('user_id', Auth::user()->id);
         $all = $tasks->count();
         $completed = $tasks->where('completed', true)->count();
         $closed = $tasks->where('closed', true)->count();

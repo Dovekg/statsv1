@@ -22,8 +22,6 @@
     </div>
 @stop
 @section('content')
-
-    @include('partials.sidebar')
     <div class="content-wrapper">
         <form action="{{ route('dashboard.tasks.store') }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
