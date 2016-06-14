@@ -163,7 +163,6 @@ return [
         Overtrue\LaravelPinyin\ServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Bican\Roles\RolesServiceProvider::class,
-
     ],
 
     /*
@@ -213,7 +212,7 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Avatar'    => Laravolt\Avatar\Facade::class,
-        'Alert' => UxWeb\SweetAlert\SweetAlert::class
+        'Alert'     => UxWeb\SweetAlert\SweetAlert::class,
     ],
 
 ];

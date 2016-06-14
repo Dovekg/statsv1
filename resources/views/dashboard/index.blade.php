@@ -52,7 +52,7 @@
 
 						<td class="col-md-3">
 							<div class="media-left media-middle">
-								<a href="#" class="btn border-info-400 text-info-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-alarm"></i></a>
+								<a href="{{ route('dashboard.tasks.process') }}" class="btn border-info-400 text-info-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-alarm"></i></a>
 							</div>
 
 							<div class="media-left">
@@ -64,7 +64,7 @@
 
 						<td class="col-md-3">
 							<div class="media-left media-middle">
-								<a href="#" class="btn border-success-400 text-success-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-checkmark3"></i></a>
+								<a href="{{ route('dashboard.tasks.completed') }}" class="btn border-success-400 text-success-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-checkmark3"></i></a>
 							</div>
 
 							<div class="media-left">
@@ -76,7 +76,7 @@
 
 						<td class="col-md-3">
 							<div class="media-left media-middle">
-								<a href="#" class="btn border-danger-400 text-danger-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-cross2"></i></a>
+								<a href="{{ route('dashboard.tasks.closed') }}" class="btn border-danger-400 text-danger-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-cross2"></i></a>
 							</div>
 
 							<div class="media-left">

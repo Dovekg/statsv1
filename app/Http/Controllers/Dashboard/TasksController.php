@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Dashboard;
 use App\Bid;
 use App\Tag;
 use App\Task;
+use App\User;
+use Bican\Roles\Models\Role;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -13,23 +15,68 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Notifynder;
 
 class TasksController extends Controller
 {
-
-    public function __construct()
+    protected $notifynder;
+    public function __construct(Notifynder $notifynder)
     {
         $this->middleware('auth');
+        $this->notifynder = $notifynder;
     }
 
     
     public function index(Task $task)
     {
-        if (Auth::user()->is('admin|analyst'))
+        if (Auth::user()->is('admin|analyst')) {
             $tasks = $task->all();
+        }
         else
             $tasks = $task->where('user_id', Auth::user()->id)->get();
         return view('dashboard.tasks.index', compact('tasks'));
+    }
+
+    public function edit($id)
+    {
+        $task = Task::findOrFail($id);
+        return view('dashboard.tasks.edit', compact('task'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $task = Task::findOrFail($id);
+        if ($request->hasFile('data')) {
+            $file = $request->file('data');
+            if ($file->isValid()) {
+                $newFileName = md5(time() . rand(0, 1000)) . '.' . $file->getClientOriginalExtension();
+                $savePath = $newFileName;
+                Storage::put(
+                    $savePath,
+                    file_get_contents($file->getRealPath())
+                );
+                $request['data_path'] = $savePath;
+                $request['data_mime'] = $file->getClientMimeType();
+                $request['data_ori_filename'] = $file->getClientOriginalName();
+            }
+        }
+        $task->save($request->except(['data', 'tags']));
+        $task->tags()->each(function($tag) {
+            $tag->delete();
+        });
+        $tags = $request->get('tags');
+        if( $tags )
+        {
+            foreach ($tags as $key => $method)
+            {
+                Tag::create([
+                    'task_id' => $task->id,
+                    'tag' => $method
+                ]);
+            };
+        };
+
+        return redirect('/dashboard/tasks/' . $task->id );
     }
 
     public function create()
@@ -54,7 +101,7 @@ class TasksController extends Controller
             }
         }
         $request['user_id'] = Auth::user()->id;
-        $id = $task->create($request->except(['_token', 'data', 'tags']))->id;
+        $id = $task->create($request->except(['data', 'tags']))->id;
         $tags = $request->get('tags');
         if( $tags )
         {
@@ -66,6 +113,7 @@ class TasksController extends Controller
                 ]);
             }
         }
+
         return redirect('/dashboard/tasks/' . $id );
     }
 
@@ -135,19 +183,36 @@ class TasksController extends Controller
 
     public function claimed(Task $task)
     {
-        if (Auth::user()->is('admin|analyst'))
-            $tasks = $task->where('claimed_user_id', Auth::user()->id)->get();
-        else
-            $tasks = $task->where('user_id', Auth::user()->id)->where('claimed', true)->get();
-        return view('dashboard.tasks.index', compact('tasks'));
+        return $this->getTasks($task, 'claimed');
     }
 
     public function completed(Task $task)
     {
+        return $this->getTasks($task, 'completed');
+    }
+    public function closed(Task $task)
+    {
+        return $this->getTasks($task, 'closed');
+    }
+    public function process(Task $task)
+    {
         if (Auth::user()->is('admin|analyst'))
-            $tasks = $task->where('claimed_user_id', Auth::user()->id)->where('completed', true)->get();
+            $tasks = $task->where('claimed', false)->get();
         else
-            $tasks = $task->where('user_id', Auth::user()->id)->where('completed', true)->get();
+            $tasks = $task->where('user_id', Auth::user()->id)->where('claimed', false)->get();
+        return view('dashboard.tasks.index', compact('tasks'));
+    }
+
+        /**
+         * @param Task $task
+         * @param $type
+         * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+         */
+    public function getTasks(Task $task, $type) {
+        if (Auth::user()->is('admin|analyst'))
+            $tasks = $task->where('claimed_user_id', Auth::user()->id)->where($type, true)->get();
+        else
+            $tasks = $task->where('user_id', Auth::user()->id)->where($type, true)->get();
         return view('dashboard.tasks.index', compact('tasks'));
     }
 

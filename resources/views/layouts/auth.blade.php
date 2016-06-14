@@ -7,7 +7,6 @@
 	<title>scistats -- 你的科学统计师</title>
 	
 	<link rel="stylesheet" type="text/css" href="/css/all.css">
-	<script type="text/javascript" src="/js/all.js"></script>
 	<!-- Global stylesheets -->
 	<!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
 	<link href="/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
@@ -55,6 +54,6 @@
 
 	</div>
 	<!-- /page container -->
-
+	<script type="text/javascript" src="/js/all.js"></script>
 </body>
 </html>

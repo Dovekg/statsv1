@@ -8,3 +8,4 @@ Homestead.json
 /public/bower_components
 /public/assets
 /resources/assets
+/database/seeds

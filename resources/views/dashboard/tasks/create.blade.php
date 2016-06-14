@@ -93,7 +93,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>邮箱：</label>
-                                            <input name="email" type="email" placeholder="test@test.com" class="form-control">
+                                            <input name="email" type="email" placeholder="test@test.com" class="form-control" value="{{Auth::user()->email}}">
                                             <span class="help-block">填写可以接收信息和结果报告的邮箱</span>
                                         </div>
                                     </div>

@@ -11,8 +11,7 @@
     <title>scistats -- 你的科学统计师</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/swiper.min.css">
     <link rel="stylesheet" href="/css/extra.css">
     <!-- <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
@@ -65,7 +64,6 @@
 <!-- <script src="/bower_components/jquery/dist/jquery.min.js"></script> -->
 <!-- <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
 
-<script type="text/javascript" src="/js/all.js"></script>
 @yield('script')
 </body>
 </html>

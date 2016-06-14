@@ -96,7 +96,7 @@
                 {!! Form::close() !!}
                 @endif
                 <ul class="list-inline list-inline-condensed heading-text pull-right">
-                    <li><button href="{{ route('dashboard.tasks.edit', $task->id) }}" class="btn btn-flat text-info">修改 <b><i class="icon-compose"></i></b></button></li>
+                    <li><a href="{{ route('dashboard.tasks.edit', $task->id) }}" class="btn btn-flat text-info">修改 <b><i class="icon-compose"></i></b></a></li>
                     @if(!$task->claimed)
                         @if(!$task->closed)
                             <li>

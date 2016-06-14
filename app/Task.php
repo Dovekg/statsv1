@@ -3,10 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Fenos\Notifynder\Notifable;
 
 class Task extends Model
 {
-    use Uuids;
+    use Uuids, Notifable;
 
     public $incrementing = false;
 
