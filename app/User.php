@@ -7,11 +7,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Avatar;
 use Bican\Roles\Traits\HasRoleAndPermission;
 use Bican\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
-use Fenos\Notifynder\Notifable;
 
 class User extends Authenticatable implements HasRoleAndPermissionContract
 {
-    use HasRoleAndPermission, Notifable;
+    use HasRoleAndPermission;
     /**
      * The attributes that are mass assignable.
      *
