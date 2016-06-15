@@ -33,7 +33,7 @@
                             <li><a href="/dashboard/perms">所有权限</a></li>
                         </ul>
                     </li>
-                    <li><a href="/dashboard/methods"><i class="icon-design"></i>所有分析方法</a></li>
+                    <li><a href="/dashboard/methods"><i class="icon-design"></i> <span>所有分析方法</span></a></li>
                     <li>
                         <a href="#"><i class="icon-list-unordered"></i> <span>个人资料</span></a>
                         <ul>
