@@ -10,7 +10,6 @@
 				<div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
 				<h5 class="content-group">登陆你的账户</h5>
 			</div>
-
 			<div class="form-group has-feedback has-feedback-left">
 				<input type="email" name="email" class="form-control" placeholder="邮箱地址" value="{{ old('email') }}">
 				<div class="form-control-feedback">

@@ -1,9 +1,9 @@
-{{--@if (Session::has('sweet_alert.alert'))--}}
-    {{--<script>--}}
-        {{--swal({!! Session::get('sweet_alert.alert') !!});--}}
-    {{--</script>--}}
-{{--@endif--}}
 @if (Session::has('sweet_alert.alert'))
+    <script>
+        swal({!! Session::get('sweet_alert.alert') !!});
+    </script>
+@endif
+{{-- @if (Session::has('sweet_alert.alert'))
     <script>
         swal({
             text: "{!! Session::get('sweet_alert.text') !!}",
@@ -18,3 +18,4 @@
         });
     </script>
 @endif
+ --}}

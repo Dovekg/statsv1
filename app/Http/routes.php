@@ -14,11 +14,9 @@
 Route::get('/', function () {
     return view('index');
 });
+Route::auth();
 
-
-Route::group(['middleware' => 'web'], function() {
-	Route::auth();
-	Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard'], function () {
+Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard'], function () {
 		Route::get('/', 'DashboardController@index');
 		Route::get('/download/{path}', ['as' => 'download.data', 'uses' => 'TasksController@downloadData' ]);
 		Route::patch('/tasks/{id}/close', ['as' => 'dashboard.tasks.close', 'uses' => 'TasksController@close']);
@@ -34,6 +32,7 @@ Route::group(['middleware' => 'web'], function() {
 		Route::resource('users', 'UsersController');
 		Route::resource('perms', 'PermsController');
 		Route::resource('roles', 'RolesController');
+		Route::resource('methods', 'MethodsController');
 	});
 	Route::group(['prefix' => 'profile'], function() {
 		Route::get('/', ['as' => 'profile.show', 'uses' => 'ProfilesController@show']);
@@ -41,5 +40,8 @@ Route::group(['middleware' => 'web'], function() {
 		Route::patch('/{id}/password', ['as' => 'profile.password', 'uses' => 'ProfilesController@changePassword']);
 		Route::patch('/{id}/username', ['as' => 'profile.username', 'uses' => 'ProfilesController@changeUsername']);
 	});
+
+Route::group(['middleware' => 'web'], function() {
+	
 });
 

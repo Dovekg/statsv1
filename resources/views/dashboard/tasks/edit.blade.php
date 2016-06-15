@@ -44,10 +44,12 @@
                                 <select name="tags[]" class="select-multiple-tags" multiple="multiple">
                                     @if(count($task->tags))
                                         @foreach($task->tags as $tag)
-                                            <option value="{{$tag->id}}" selected>{{ $tag->tag }}</option>
+                                            <option value="{{$tag->tag}}" selected>{{ $tag->tag }}</option>
                                         @endforeach
                                     @endif
-                                    <option value="AZ">Arizona</option>
+                                    @foreach ($methods as $method)
+                                        <option value="{{ $method->name }}">{{ $method->name }}</option>
+                                    @endforeach
                                 </select>
                                 <span class="help-block">你可以选择已有的方法，也可以通过"输入+回车"添加其他方法</span>
                             </div>

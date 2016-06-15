@@ -25,7 +25,7 @@
 @section('content')
     <div class="panel panel-flat">
         <div class="panel-heading">
-            <h5 class="panel-title">所有用户列表</h5>
+            <h5 class="panel-title">所有角色列表</h5>
             <div class="heading-elements">
                 <ul class="icons-list">
                     <li><span type="button" class="btn btn-flat bg-primary" data-toggle="modal" data-target="#modal_add_role"><i class="icon-coin-dollar"></i>新角色</span></li>
@@ -58,7 +58,7 @@
                             <td>{{ $role->level }}</td>
                             <td>
                                 <a href="{{route('dashboard.roles.edit', $role->id)}}" class="btn btn-flat"><i class="icon-pencil5 text-primary"></i></a>
-                                {!! Form::open(['route' => ['dashboard.roles.destroy', $role->id], 'method' => 'delete']) !!}
+                                {!! Form::open(['route' => ['dashboard.roles.destroy', $role->id], 'method' => 'delete', 'class' => 'display-inline-block']) !!}
                                 <button type="submit" onclick="return confirm('确认删除？')" class="btn btn-flat text-danger">
                                     <i class="icon-trash"></i>
                                 </button>

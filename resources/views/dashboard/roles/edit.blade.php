@@ -66,7 +66,7 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-link" data-dismiss="modal">关闭</button>
+                            <button type="button" class="btn btn-link"><a href="{{ route('dashboard.roles.index')}}">关闭</a></button>
                             <button type="submit" class="btn btn-primary">提交</button>
                         </div>
                     </div>

@@ -2,7 +2,9 @@
 
 
 @section('content')
-
+@if ($errors->has('email'))
+                <span class="help-block text-danger"><i class="icon-cancel-circle2 position-left"></i> {{ $errors->first('email') }}</span>
+                @endif
     <section id="secure">
         <div class="container">
             <div class="row">
@@ -76,7 +78,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center">
                 <h1>分析团队</h1>
-                <p>团队虽小，五脏俱全，个个都是大牛！同时，也期待你的加入！</p>
+                <p>团队虽小，人才俱全! 同时，也期待您的加入！有意者可以<a href="mailto:hr@scistats.com"><i class="fa fa-envelope" style="margin-left:10px;"></i>发邮件给我们</a></p>
             </div>
         </div>
     </div>
@@ -99,7 +101,9 @@
     <section id="footer">
         <div class="container">
              <footer>
-                <span>© Origeno 成都元因科技 保留一些权利</span> <span class="pull-right"><a href="#">隐私保护</a> · <a href="#">使用条款</a></span>
+                <span>© Origeno 成都元因科技 保留一些权利</span> <span class="pull-right">
+                <!-- <a href="/privacy">隐私保护</a> · <a href="/terms">使用条款</a> -->
+                </span>
             </footer>
         </div>
        

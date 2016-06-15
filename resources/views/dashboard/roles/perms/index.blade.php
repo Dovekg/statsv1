@@ -64,7 +64,7 @@
                             </td>
                             <td>
                                 <a href="{{route('dashboard.perms.edit', $perm->id)}}" class="btn btn-flat"><i class="icon-pencil5 text-primary"></i></a>
-                                {!! Form::open(['route' => ['dashboard.perms.destroy', $perm->id], 'method' => 'delete']) !!}
+                                {!! Form::open(['route' => ['dashboard.perms.destroy', $perm->id], 'method' => 'delete', 'class' => 'display-inline-block']) !!}
                                 <button type="submit" onclick="return confirm('确认删除？')" class="btn btn-flat text-danger">
                                         <i class="icon-trash"></i>
                                 </button>

@@ -42,7 +42,9 @@
                                 <div class="form-group">
                                     <label>方法标签：</label>
                                     <select name="tags[]" class="select-multiple-tags" multiple="multiple">
-                                        <option value="AZ">Arizona</option>
+                                        @foreach ($methods as $method)
+                                            <option value="{{ $method->name }}">{{ $method->name }}</option>
+                                        @endforeach
                                     </select>
                                     <span class="help-block">你可以选择已有的方法，也可以通过"输入+回车"添加其他方法</span>
                                 </div>

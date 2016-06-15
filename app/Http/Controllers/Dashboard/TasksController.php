@@ -6,6 +6,7 @@ use App\Bid;
 use App\Tag;
 use App\Task;
 use App\User;
+use App\Method;
 use Bican\Roles\Models\Role;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Notifynder;
+use Alert;
 
 class TasksController extends Controller
 {
@@ -40,7 +42,15 @@ class TasksController extends Controller
     public function edit($id)
     {
         $task = Task::findOrFail($id);
-        return view('dashboard.tasks.edit', compact('task'));
+        $methods =Method::all()->all();
+        foreach ($methods as $k => $v) {
+            foreach ($task->tags as $t) {
+                if($v->name == $t->tag)
+                    unset($methods[$k]);
+            }
+        };
+        
+        return view('dashboard.tasks.edit', compact('task', 'methods'));
     }
 
     public function update(Request $request, $id)
@@ -62,11 +72,12 @@ class TasksController extends Controller
         }
         $task->save($request->except(['data', 'tags']));
         $task->tags()->each(function($tag) {
-            $tag->delete();
-        });
+                $tag->delete();
+            });
         $tags = $request->get('tags');
         if( $tags )
         {
+            
             foreach ($tags as $key => $method)
             {
                 Tag::create([
@@ -75,13 +86,14 @@ class TasksController extends Controller
                 ]);
             };
         };
-
+        
         return redirect('/dashboard/tasks/' . $task->id );
     }
 
     public function create()
     {
-        return view('dashboard.tasks.create ');
+        $methods = Method::all();
+        return view('dashboard.tasks.create', compact('methods'));
     }
 
     public function store(Request $request, Task $task, Tag $tag)
@@ -113,7 +125,7 @@ class TasksController extends Controller
                 ]);
             }
         }
-
+        alert()->success('任务创建成功，最快我们将在一个小时内回复！', '很好');
         return redirect('/dashboard/tasks/' . $id );
     }
 
@@ -144,6 +156,7 @@ class TasksController extends Controller
         $task = Task::findOrFail($id);
         $task->closed = !($task->closed);
         $task->save();
+        alert()->success('任务状态已更新！', '操作成功');
         return redirect()->back();
     }
 
@@ -153,6 +166,7 @@ class TasksController extends Controller
         $task->claimed = true;
         $task->claimed_user_id = Auth::user()->id;
         $task->save();
+        alert()->success('任务领取成功，请尽快完成分析！', '操作成功');
         return redirect()->back();
     }
 
@@ -160,6 +174,7 @@ class TasksController extends Controller
     {
         $task = Task::findOrFail($id);
         $task->delete();
+        alert()->success('任务删除成功！', '操作成功');
         return redirect()->to(route('dashboard.tasks.index'));
 
     }
@@ -169,6 +184,7 @@ class TasksController extends Controller
         $task = Task::findOrFail($id);
         $task->completed = true;
         $task->save();
+        alert()->success('任务完成，我们尽快通知用户验收！', '恭喜');
         return redirect()->back();
 
     }
@@ -178,6 +194,7 @@ class TasksController extends Controller
         $request['task_id'] = $id;
         $request['bid_user_id'] = Auth::user()->id;
         $bid->create($request->all());
+        alert()->success('竞价已提交！', '操作成功');
         return redirect()->back();
     }
 

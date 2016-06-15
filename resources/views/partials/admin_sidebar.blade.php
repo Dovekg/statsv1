@@ -21,7 +21,8 @@
                         <a href="#"><i class="icon-stack"></i> <span>需求管理</span></a>
                         <ul>
                             <li><a href="/dashboard/tasks">所有需求</a></li>
-                            <li><a href="#">新建需求</a></li>
+                            <li><a href="/dashboard/tasks/claimed">已认领需求</a></li>
+                            <li><a href="/dashboard/tasks/completed">已完成需求</a></li>
                         </ul>
                     </li>
                     <li>
@@ -32,6 +33,7 @@
                             <li><a href="/dashboard/perms">所有权限</a></li>
                         </ul>
                     </li>
+                    <li><a href="/dashboard/methods"><i class="icon-design"></i>所有分析方法</a></li>
                     <li>
                         <a href="#"><i class="icon-list-unordered"></i> <span>个人资料</span></a>
                         <ul>

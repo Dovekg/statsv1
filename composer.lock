@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "00546dbd8cf76989271242fc01eeffc7",
-    "content-hash": "d2f127fa65fa4fd96a95e4a76404683f",
+    "hash": "fd3e12a7c4bac7007c68341579682312",
+    "content-hash": "aeea0064f6b4759512dcd56bd26a29dc",
     "packages": [
         {
             "name": "bican/roles",
@@ -51,6 +51,46 @@
                 "roles"
             ],
             "time": "2015-07-30 10:00:12"
+        },
+        {
+            "name": "caouecs/laravel-lang",
+            "version": "3.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/caouecs/Laravel-lang.git",
+                "reference": "52d7aba50e9585e1d29dedbeeb2bfdb1bc4cb041"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/caouecs/Laravel-lang/52d7aba50e9585e1d29dedbeeb2bfdb1bc4cb041.zip",
+                "reference": "52d7aba50e9585e1d29dedbeeb2bfdb1bc4cb041",
+                "shasum": ""
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "^1.10"
+            },
+            "suggest": {
+                "overtrue/laravel-lang": "Command to add languages in your project"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "caouecs",
+                    "email": "caouecs@caouecs.net"
+                }
+            ],
+            "description": "Languages for Laravel",
+            "keywords": [
+                "lang",
+                "languages",
+                "laravel",
+                "lpm"
+            ],
+            "time": "2016-05-23 05:54:40"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -1524,6 +1564,50 @@
             "time": "2016-04-19 13:41:41"
         },
         {
+            "name": "overtrue/laravel-lang",
+            "version": "3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/overtrue/laravel-lang.git",
+                "reference": "f345f5bf4d66ce5207bfdc3691d4617e4c12fbc5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packagist.phpcomposer.com/files/overtrue/laravel-lang/f345f5bf4d66ce5207bfdc3691d4617e4c12fbc5.zip",
+                "reference": "f345f5bf4d66ce5207bfdc3691d4617e4c12fbc5",
+                "shasum": ""
+            },
+            "require": {
+                "caouecs/laravel-lang": "~3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Overtrue\\LaravelLang\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "overtrue",
+                    "email": "anzhengchao@gmail.com"
+                }
+            ],
+            "description": "List of 52 languages for Laravel 5",
+            "keywords": [
+                "languages",
+                "laravel",
+                "overtrue"
+            ],
+            "time": "2016-05-30 12:22:46"
+        },
+        {
             "name": "overtrue/laravel-pinyin",
             "version": "3.0.2",
             "source": {
@@ -2700,16 +2784,16 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v2.2.1",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "63f37b9395e8041cd4313129c08ece896d06ca8e"
+                "reference": "9ca5644c536654e9509b9d257f53c58630eb2a6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/63f37b9395e8041cd4313129c08ece896d06ca8e",
-                "reference": "63f37b9395e8041cd4313129c08ece896d06ca8e",
+                "url": "https://packagist.phpcomposer.com/files/vlucas/phpdotenv/9ca5644c536654e9509b9d257f53c58630eb2a6a.zip",
+                "reference": "9ca5644c536654e9509b9d257f53c58630eb2a6a",
                 "shasum": ""
             },
             "require": {
@@ -2721,7 +2805,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-master": "2.3-dev"
                 }
             },
             "autoload": {
@@ -2746,7 +2830,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2016-04-15 10:48:49"
+            "time": "2016-06-14 14:14:52"
         },
         {
             "name": "webpatser/laravel-uuid",
