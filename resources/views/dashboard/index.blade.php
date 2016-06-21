@@ -28,9 +28,16 @@
 		<div class="panel panel-flat">
 			<div class="panel-heading">
 				<h6 class="panel-title">所有项目</h6>
+				@role('admin|analyst|moderator')
 				<div class="heading-elements">
-					<a href="{{ route('dashboard.tasks.create') }}" class="btn bg-teal-400 btn-sm btn-labeled btn-labeled-right heading-btn">创建新需求<b><i class="icon-pencil6"></i></b></a>
+					<a href="{{ route('dashboard.tasks.index') }}" class="btn bg-teal-400 btn-sm btn-labeled btn-labeled-right heading-btn">查看所有需求<b><i class="icon-eye"></i></b></a>
 				</div>
+				@else
+				<div class="heading-elements">
+					<button type="button" id="create-button" class="btn bg-teal-400 btn-sm btn-labeled btn-labeled-right heading-btn" data-toggle="modal" data-target="#modal_create_task">创建新需求<b><i class="icon-pencil6"></i></b></button>
+				</div>
+				@include('partials.create_task_modal')
+				@endrole
 			</div>
 
 			<div class="table-responsive">

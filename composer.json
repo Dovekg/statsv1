@@ -13,7 +13,6 @@
         "overtrue/laravel-pinyin": "~3.0",
         "uxweb/sweet-alert": "^1.1",
         "bican/roles": "^2.1",
-        "fenos/notifynder": "3.*",
         "doctrine/dbal": "^2.5",
         "overtrue/laravel-lang":"~3.0"
     },

@@ -163,7 +163,6 @@ return [
         Overtrue\LaravelPinyin\ServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Bican\Roles\RolesServiceProvider::class,
-        Fenos\Notifynder\NotifynderServiceProvider::class,
     ],
 
     /*
@@ -214,7 +213,6 @@ return [
         'Html'      => Collective\Html\HtmlFacade::class,
         'Avatar'    => Laravolt\Avatar\Facade::class,
         'Alert'     => UxWeb\SweetAlert\SweetAlert::class,
-        'Notifynder'    => Fenos\Notifynder\Facades\Notifynder::class,
     ],
 
 ];

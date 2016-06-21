@@ -16,26 +16,23 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Notifynder;
 use Alert;
 
 class TasksController extends Controller
 {
-    protected $notifynder;
-    public function __construct(Notifynder $notifynder)
+    public function __construct()
     {
         $this->middleware('auth');
-        $this->notifynder = $notifynder;
     }
 
     
     public function index(Task $task)
     {
-        if (Auth::user()->is('admin|analyst')) {
-            $tasks = $task->all();
+        if (Auth::user()->is('admin|analyst|moderator')) {
+            $tasks = $task->orderBy('created_at', 'desc')->paginate(10);
         }
         else
-            $tasks = $task->where('user_id', Auth::user()->id)->get();
+            $tasks = $task->where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(10);
         return view('dashboard.tasks.index', compact('tasks'));
     }
 
@@ -160,11 +157,11 @@ class TasksController extends Controller
         return redirect()->back();
     }
 
-    public function claim($id)
+    public function claim(Request $request, $id)
     {
         $task = Task::findOrFail($id);
         $task->claimed = true;
-        $task->claimed_user_id = Auth::user()->id;
+        $task->claimed_user_id = $request['user_id'];
         $task->save();
         alert()->success('任务领取成功，请尽快完成分析！', '操作成功');
         return redirect()->back();
@@ -200,7 +197,8 @@ class TasksController extends Controller
 
     public function claimed(Task $task)
     {
-        return $this->getTasks($task, 'claimed');
+        $tasks = $task->where('claimed_user_id', Auth::user()->id)->where('claimed', true)->where('completed', false)->orderBy('created_at', 'desc')->paginate(10);
+        return view('dashboard.tasks.index', compact('tasks'));
     }
 
     public function completed(Task $task)
@@ -214,9 +212,9 @@ class TasksController extends Controller
     public function process(Task $task)
     {
         if (Auth::user()->is('admin|analyst'))
-            $tasks = $task->where('claimed', false)->get();
+            $tasks = $task->where('claimed', false)->orderBy('created_at', 'desc')->paginate(10);
         else
-            $tasks = $task->where('user_id', Auth::user()->id)->where('claimed', false)->get();
+            $tasks = $task->where('user_id', Auth::user()->id)->where('claimed', false)->orderBy('created_at', 'desc')->paginate(10);
         return view('dashboard.tasks.index', compact('tasks'));
     }
 
@@ -227,9 +225,9 @@ class TasksController extends Controller
          */
     public function getTasks(Task $task, $type) {
         if (Auth::user()->is('admin|analyst'))
-            $tasks = $task->where('claimed_user_id', Auth::user()->id)->where($type, true)->get();
+            $tasks = $task->where('claimed_user_id', Auth::user()->id)->where($type, true)->orderBy('created_at', 'desc')->paginate(10);
         else
-            $tasks = $task->where('user_id', Auth::user()->id)->where($type, true)->get();
+            $tasks = $task->where('user_id', Auth::user()->id)->where($type, true)->orderBy('created_at', 'desc')->paginate(10);
         return view('dashboard.tasks.index', compact('tasks'));
     }
 

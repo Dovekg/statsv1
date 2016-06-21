@@ -35,14 +35,6 @@
                     <span class="btn bg-success-400 btn-sm btn-labeled btn-labeled-right heading-btn">需求完成 <b><i class="icon-minus-circle2"></i></b></span>
                 @elseif($task->claimed)
                     <span class="btn bg-grey-400 btn-sm btn-labeled btn-labeled-right heading-btn">已被认领 <b><i class="icon-checkmark-circle"></i></b></span>
-                @elseif(Auth::user()->is('analyst'))
-                    {!! Form::open(['route' => ['dashboard.tasks.claim', $task->id], 'method' => 'patch', 'class' => ' display-inline-block']) !!}
-                    <button type="submit" onclick="return confirm('确认认领？')" class="btn bg-teal-400 btn-sm btn-labeled btn-labeled-right heading-btn">认领
-                        <b>
-                            <i class="icon-checkmark-circle2"></i>
-                        </b>
-                    </button>
-                    {!! Form::close() !!}
                 @else
                     <span class="btn bg-success-400 btn-sm btn-labeled btn-labeled-right heading-btn">认领中<b><i class="icon-checkmark-circle"></i></b></span>
                 @endif
@@ -70,15 +62,15 @@
                 @endif
             </p>
 
-                <h6 class="text-semibold">数据（右键另存为）</h6>
-                <p class="content-group">
-                    @if($task->data_path)
-                        <a href="{{ route('download.data', $task->data_path) }}" class="btn btn-sm bg-teal"><i class="icon-file-download">&nbsp;</i>{{ $task->data_ori_filename }}</a>
-                    @else
-                        没有提供数据
-                    @endif
-                    </p>
-            @role('admin|analyst')
+            <h6 class="text-semibold">数据（右键另存为）</h6>
+            <p class="content-group">
+                @if($task->data_path)
+                    <a href="{{ route('download.data', $task->data_path) }}" class="btn btn-sm bg-teal"><i class="icon-file-download">&nbsp;</i>{{ $task->data_ori_filename }}</a>
+                @else
+                    没有提供数据
+                @endif
+            </p>
+            @role('admin|analyst|moderator')
             @include('partials.bids')
             @endrole
 
@@ -87,17 +79,18 @@
         <div class="panel-footer">
             <div class="heading-elements">
                 @if(!$task->completed && Auth::user()->id == $task->claimed_user_id)
-                {!! Form::open(['route' => ['dashboard.tasks.complete', $task->id], 'method' => 'patch', 'class' => ' display-inline-block']) !!}
-                <button type="submit" onclick="return confirm('确认完成？')" class="btn bg-teal-400 btn-sm btn-labeled btn-labeled-right heading-btn">分析完成
-                    <b>
-                        <i class="icon-checkmark-circle2"></i>
-                    </b>
-                </button>
-                {!! Form::close() !!}
+                    {!! Form::open(['route' => ['dashboard.tasks.complete', $task->id], 'method' => 'patch', 'class' => ' display-inline-block']) !!}
+                    <button type="submit" onclick="return confirm('确认完成？')" class="btn bg-teal-400 btn-sm btn-labeled btn-labeled-right heading-btn">分析完成
+                        <b>
+                            <i class="icon-checkmark-circle2"></i>
+                        </b>
+                    </button>
+                    {!! Form::close() !!}
                 @endif
                 <ul class="list-inline list-inline-condensed heading-text pull-right">
-                    <li><a href="{{ route('dashboard.tasks.edit', $task->id) }}" class="btn btn-flat text-info">修改 <b><i class="icon-compose"></i></b></a></li>
-                    @if(!$task->claimed)
+
+                    @if( !$task->claimed && $task->user_id == Auth::user()->id || Auth::user()->is('admin'))
+                        <li><a href="{{ route('dashboard.tasks.edit', $task->id) }}" class="btn btn-flat text-info">修改 <b><i class="icon-compose"></i></b></a></li>
                         @if(!$task->closed)
                             <li>
                                 {!! Form::open(['route' => ['dashboard.tasks.close', $task->id], 'method' => 'patch']) !!}

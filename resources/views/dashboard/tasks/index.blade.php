@@ -71,5 +71,6 @@
                 </ul>
             </div>
         </div>
+                {{ $tasks->links() }}
     </div>
 @stop

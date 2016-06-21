@@ -20,7 +20,7 @@ class DashboardController extends Controller
 	
     public function index(Task $task)
     {
-        if (Auth::user()->is('admin|analyst'))
+        if (Auth::user()->is('admin|analyst|moderator'))
             $tasks = $task->all();
         else
             $tasks = $task->where('user_id', Auth::user()->id);

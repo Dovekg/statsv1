@@ -1,13 +1,13 @@
 <h6 class="text-semibold">竞价</h6>
 @if(!$task->claimed)
-<div class="content-group-sm">
-    <p class="text-semibold">剩余时间：24小时之内完成报价</p>
-    <div class="progress progress-xs">
-        <div class="progress-bar progress-bar-info progress-bar-striped active" style="width: {{ $percent }}%">
-            <span class="sr-only">{{ $percent }}% Complete</span>
+    <div class="content-group-sm">
+        <p class="text-semibold">剩余时间：24小时之内完成报价</p>
+        <div class="progress progress-xs">
+            <div class="progress-bar progress-bar-info progress-bar-striped active" style="width: {{ $percent }}%">
+                <span class="sr-only">{{ $percent }}% Complete</span>
+            </div>
         </div>
     </div>
-</div>
 @endif
 <!-- Daily sales -->
 <div class="panel panel-flat">
@@ -39,6 +39,10 @@
                     <th>提交时间</th>
                     <th>所需时间</th>
                     <th>出价</th>
+
+                    @if(Auth::user()->is('moderator'))
+                        <th>分配</th>
+                    @endif
                 </tr>
                 </thead>
                 <tbody>
@@ -64,6 +68,18 @@
                         <td>
                             <h6 class="text-semibold no-margin">${{ $bid->price }}</h6>
                         </td>
+                        @if(Auth::user()->is('moderator'))
+                            <td>
+                                {!! Form::open(['route' => ['dashboard.tasks.claim', $task->id], 'method' => 'patch', 'class' => ' display-inline-block']) !!}
+                                <input type="hidden" name="user_id" value="{{ $bid->bid_user_id }}">
+                                <button type="submit" onclick="return confirm('确认分配给该分析员？')" class="btn bg-teal-400 btn-sm btn-labeled btn-labeled-right heading-btn">分配
+                                    <b>
+                                        <i class="icon-arrow-right5"></i>
+                                    </b>
+                                </button>
+                                {!! Form::close() !!}
+                            </td>
+                        @endif
                     </tr>
                 @endforeach
                 </tbody>
@@ -88,36 +104,36 @@
             </div>
 
             {!! Form::open(['route' => ['dashboard.tasks.bid', $task->id], 'method' => 'patch']) !!}
-                {{ csrf_field() }}
-                <div class="row">
-                    <div class="col-sm-10 col-sm-offset-1">
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>所需时间：</label>
-                                        <input name="time" type="number" placeholder="天" class="form-control">
-                                        <span class="help-block">请给出大致时间</span>
-                                    </div>
+            {{ csrf_field() }}
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>所需时间：</label>
+                                    <input name="time" type="number" placeholder="天" class="form-control">
+                                    <span class="help-block">请给出大致时间</span>
                                 </div>
+                            </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>价格：</label>
-                                        <input name="price" type="number" placeholder="1,000元" class="form-control">
-                                        <span class="help-block">请给出整数价格</span>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>价格：</label>
+                                    <input name="price" type="number" placeholder="1,000元" class="form-control">
+                                    <span class="help-block">请给出整数价格</span>
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-link" data-dismiss="modal">关闭</button>
-                            <button type="submit" class="btn btn-primary">提交评论</button>
-                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary">提交评论</button>
                     </div>
                 </div>
+            </div>
             {!! Form::close() !!}
 
         </div>
