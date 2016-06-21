@@ -72,7 +72,7 @@
 
 			@if(Auth::user()->is('admin'))
 				@include('partials.admin_sidebar')
-			@elseif(Auth::user()->is('analyst'))
+			@elseif(Auth::user()->is('analyst') || Auth::user()->is('moderator'))
 				@include('partials.analyst_sidebar')
 			@else
 				@include('partials.sidebar')

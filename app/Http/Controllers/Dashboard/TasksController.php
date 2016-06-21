@@ -197,7 +197,12 @@ class TasksController extends Controller
 
     public function claimed(Task $task)
     {
-        $tasks = $task->where('claimed_user_id', Auth::user()->id)->where('claimed', true)->where('completed', false)->orderBy('created_at', 'desc')->paginate(10);
+        if (Auth::user()->is('admin'))
+            $tasks = $task->where('claimed', true)->where('completed', false)->orderBy('created_at', 'desc')->paginate(10);
+        elseif(Auth::user()->is('analyst|moderator'))
+            $tasks = $task->where('claimed_user_id', Auth::user()->id)->where('completed', false)->orderBy('created_at', 'desc')->paginate(10);
+        else
+            $tasks = $task->where('user_id', Auth::user()->id)->where('claimed', true)->orderBy('created_at', 'desc')->paginate(10);
         return view('dashboard.tasks.index', compact('tasks'));
     }
 
@@ -224,8 +229,8 @@ class TasksController extends Controller
          * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
          */
     public function getTasks(Task $task, $type) {
-        if (Auth::user()->is('admin|analyst'))
-            $tasks = $task->where('claimed_user_id', Auth::user()->id)->where($type, true)->orderBy('created_at', 'desc')->paginate(10);
+        if (Auth::user()->is('admin|analyst|moderator'))
+            $tasks = $task->where($type, true)->orderBy('created_at', 'desc')->paginate(10);
         else
             $tasks = $task->where('user_id', Auth::user()->id)->where($type, true)->orderBy('created_at', 'desc')->paginate(10);
         return view('dashboard.tasks.index', compact('tasks'));
