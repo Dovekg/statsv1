@@ -61,6 +61,14 @@
                     没有提供方法要求
                 @endif
             </p>
+            <h6 class="text-semibold">软件要求</h6>
+            <p class="content-group-lg">
+                @if($task->soft)
+                    {{ $task->soft }}
+                @else
+                    没有提供方法要求
+                @endif
+            </p>
 
             <h6 class="text-semibold">数据（右键另存为）</h6>
             <p class="content-group">
