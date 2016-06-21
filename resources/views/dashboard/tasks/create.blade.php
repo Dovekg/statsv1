@@ -50,6 +50,14 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label>分析软件要求：</label>
+                                    <select name="soft" class="select select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                        <option value="sas">SAS</option>
+                                        <option value="spss">SPSS</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
                                     <label>数据描述：</label>
                                     <textarea name="description" rows="5" cols="5" class="form-control" placeholder="填写需求描述信息"></textarea>
                                 </div>
