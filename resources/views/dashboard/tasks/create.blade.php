@@ -52,6 +52,7 @@
                                 <div class="form-group">
                                     <label>分析软件要求：</label>
                                     <select name="soft" class="select select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                        <option value=""></option>
                                         <option value="sas">SAS</option>
                                         <option value="spss">SPSS</option>
                                     </select>
