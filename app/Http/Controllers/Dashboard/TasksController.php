@@ -28,7 +28,7 @@ class TasksController extends Controller
     
     public function index(Task $task)
     {
-        if (Auth::user()->is('admin|analyst|moderator')) {
+        if (Auth::user()->is('admin|analyst')) {
             $tasks = $task->orderBy('created_at', 'desc')->paginate(10);
         }
         else
@@ -122,7 +122,7 @@ class TasksController extends Controller
                 ]);
             }
         }
-        alert()->success('任务创建成功，最快我们将在一个小时内回复！', '很好');
+        alert()->success('任务已顺利提交给分析员！', '成功');
         return redirect('/dashboard/tasks/' . $id );
     }
 
@@ -199,10 +199,10 @@ class TasksController extends Controller
     {
         if (Auth::user()->is('admin'))
             $tasks = $task->where('claimed', true)->where('completed', false)->orderBy('created_at', 'desc')->paginate(10);
-        elseif(Auth::user()->is('analyst|moderator'))
+        elseif(Auth::user()->is('analyst'))
             $tasks = $task->where('claimed_user_id', Auth::user()->id)->where('completed', false)->orderBy('created_at', 'desc')->paginate(10);
         else
-            $tasks = $task->where('user_id', Auth::user()->id)->where('claimed', true)->orderBy('created_at', 'desc')->paginate(10);
+            $tasks = $task->where('user_id', Auth::user()->id)->where('claimed', true)->where('completed', false)->orderBy('created_at', 'desc')->paginate(10);
         return view('dashboard.tasks.index', compact('tasks'));
     }
 
@@ -214,14 +214,6 @@ class TasksController extends Controller
     {
         return $this->getTasks($task, 'closed');
     }
-    public function process(Task $task)
-    {
-        if (Auth::user()->is('admin|analyst'))
-            $tasks = $task->where('claimed', false)->orderBy('created_at', 'desc')->paginate(10);
-        else
-            $tasks = $task->where('user_id', Auth::user()->id)->where('claimed', false)->orderBy('created_at', 'desc')->paginate(10);
-        return view('dashboard.tasks.index', compact('tasks'));
-    }
 
         /**
          * @param Task $task
@@ -229,7 +221,7 @@ class TasksController extends Controller
          * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
          */
     public function getTasks(Task $task, $type) {
-        if (Auth::user()->is('admin|analyst|moderator'))
+        if (Auth::user()->is('admin|analyst'))
             $tasks = $task->where($type, true)->orderBy('created_at', 'desc')->paginate(10);
         else
             $tasks = $task->where('user_id', Auth::user()->id)->where($type, true)->orderBy('created_at', 'desc')->paginate(10);

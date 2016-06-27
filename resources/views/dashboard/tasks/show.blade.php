@@ -78,7 +78,7 @@
                     没有提供数据
                 @endif
             </p>
-            @role('admin|analyst|moderator')
+            @role('admin|analyst')
             @include('partials.bids')
             @endrole
 

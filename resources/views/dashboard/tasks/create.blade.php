@@ -58,15 +58,23 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>数据描述：</label>
-                                    <textarea name="description" rows="5" cols="5" class="form-control" placeholder="填写需求描述信息"></textarea>
-                                </div>
-
-                                <div class="form-group">
                                     <label>数据：</label>
                                     <input name="data" type="file" class="file-styled">
                                     <span class="help-block">请打包压缩成一个文件后上传</span>
                                 </div>
+
+                                <div class="form-group">
+                                    <label>数据描述：</label>
+                                    <textarea name="description" rows="5" cols="5" class="form-control" placeholder="填写需求描述信息"></textarea>
+                                </div>
+
+                                </fieldset>
+                                <fieldset>
+                                    <legend class="text-semibold"><i class="icon-coin-dollar">&nbsp;</i>定价信息：
+                                        <button type="button" id="price-button" class="btn bg-primary btn-sm btn-labeled btn-labeled-right heading-btn" data-toggle="modal" data-target="#modal_make_price">查考定价标准<b><i class="icon-coin-yen"></i></b></button>
+                        @include('partials.make_price_modal')
+                                    </legend>
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">

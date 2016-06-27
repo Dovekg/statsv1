@@ -18,17 +18,20 @@ class DashboardController extends Controller
 	}
 
 	
-    public function index(Task $task)
+    public function index(Task $tasks)
     {
-        if (Auth::user()->is('admin|analyst|moderator'))
-            $tasks = $task->all();
-        else
-            $tasks = $task->where('user_id', Auth::user()->id);
-        $all = $tasks->count();
-        $completed = $tasks->where('completed', true)->count();
-        $closed = $tasks->where('closed', true)->count();
-        $process = $all - $completed - $closed;
-
+        if (Auth::user()->is('admin|analyst')) {
+            $all = $tasks->all()->count();
+            $completed = $tasks->where('completed', true)->count();
+            $closed = $tasks->where('closed', true)->count();
+            $process = $tasks->where('claimed', true)->count();
+        }
+        else {
+            $all = $tasks->where('user_id', Auth::user()->id)->count();
+            $completed = $tasks->where('completed', true)->count();
+            $closed = $tasks->where('closed', true)->count();
+            $process = $tasks->where('claimed', true)->count();
+        }
         return view('dashboard.index', compact('all', 'process', 'completed', 'closed'));
     }
 }

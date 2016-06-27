@@ -28,7 +28,7 @@
 		<div class="panel panel-flat">
 			<div class="panel-heading">
 				<h6 class="panel-title">所有项目</h6>
-				@role('admin|analyst|moderator')
+				@role('admin|analyst')
 				<div class="heading-elements">
 					<a href="{{ route('dashboard.tasks.index') }}" class="btn bg-teal-400 btn-sm btn-labeled btn-labeled-right heading-btn">查看所有需求<b><i class="icon-eye"></i></b></a>
 				</div>
@@ -59,12 +59,12 @@
 
 						<td class="col-md-3">
 							<div class="media-left media-middle">
-								<a href="{{ route('dashboard.tasks.process') }}" class="btn border-info-400 text-info-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-alarm"></i></a>
+								<a href="{{ route('dashboard.tasks.claimed') }}" class="btn border-info-400 text-info-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-user-check"></i></a>
 							</div>
 
 							<div class="media-left">
 								<h5 class="text-semibold no-margin">
-									{{ $process }} <small class="display-block no-margin">进行中</small>
+									{{ $process }} <small class="display-block no-margin">已被认领</small>
 								</h5>
 							</div>
 						</td>

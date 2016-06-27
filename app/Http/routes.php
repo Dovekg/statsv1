@@ -23,7 +23,6 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard'], function () 
 		Route::patch('/tasks/{id}/claim', ['as' => 'dashboard.tasks.claim', 'uses' => 'TasksController@claim']);
 		Route::patch('/tasks/{id}/complete', ['as' => 'dashboard.tasks.complete', 'uses' => 'TasksController@complete']);
 		Route::patch('/tasks/{id}/bid', ['as' => 'dashboard.tasks.bid', 'uses' => 'TasksController@bid']);
-		Route::get('/tasks/process', ['as' => 'dashboard.tasks.process', 'uses' => 'TasksController@process']);
 		Route::get('/tasks/claimed', ['as' => 'dashboard.tasks.claimed', 'uses' => 'TasksController@claimed']);
 		Route::get('/tasks/completed', ['as' => 'dashboard.tasks.completed', 'uses' => 'TasksController@completed']);
 		Route::get('/tasks/closed', ['as' => 'dashboard.tasks.closed', 'uses' => 'TasksController@closed']);
