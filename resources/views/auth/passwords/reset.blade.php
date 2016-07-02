@@ -3,15 +3,16 @@
 <!-- Advanced login -->
 <form role="form" method="POST" action="{{ url('/password/reset') }}">
 {{ csrf_field() }}
+<input type="hidden" name="token" value="{{ $token }}">
 	<div class="panel panel-body login-form">
 		<div class="text-center">
 			<div class="icon-object border-info text-info"><i class="icon-spinner11"></i></div>
 			<h5 class="content-group">重置密码<small class="display-block">必须填写所有内容</small></h5>
 		</div>
-
+		
 		<div class="content-divider text-muted form-group"><span>邮箱验证</span></div>
 		<div class="form-group has-feedback has-feedback-left">
-			<input type="email" name="email" class="form-control" placeholder="邮箱地址">
+			<input type="email" name="email" id="email" class="form-control" value="{{ $email or old('email') }}">
 			<div class="form-control-feedback">
 				<i class="icon-mention text-muted"></i>
 			</div>

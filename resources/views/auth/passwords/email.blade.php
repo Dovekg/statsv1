@@ -4,6 +4,12 @@
 	<form role="form" method="POST" action="{{ url('/password/email') }}">
 	{{ csrf_field() }}
 		<div class="panel panel-body login-form">
+
+		@if (session('status'))
+		    <div class="alert alert-success">
+		        {{ session('status') }}
+		    </div>
+		@endif
 			<div class="text-center">
 				<div class="icon-object border-warning text-warning"><i class="icon-spinner11"></i></div>
 				<h5 class="content-group">密码找回 <small class="display-block">我们会通过邮件发送给你指导</small></h5>
