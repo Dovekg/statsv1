@@ -27,10 +27,11 @@ class DashboardController extends Controller
             $process = $tasks->where('claimed', true)->count();
         }
         else {
-            $all = $tasks->where('user_id', Auth::user()->id)->count();
-            $completed = $tasks->where('completed', true)->count();
-            $closed = $tasks->where('closed', true)->count();
-            $process = $tasks->where('claimed', true)->count();
+            $allTasks = $tasks->where('user_id', Auth::user()->id);
+            $all = $allTasks->count();
+            $completed = $allTasks->where('completed', true)->count();
+            $closed = $allTasks->where('closed', true)->count();
+            $process = $allTasks->where('claimed', true)->count();
         }
         return view('dashboard.index', compact('all', 'process', 'completed', 'closed'));
     }
