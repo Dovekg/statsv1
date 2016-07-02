@@ -12,7 +12,7 @@ class MethodsController extends Controller
 {
 	public function __construct()
     {
-        $this->middleware('role:admin|analyst|moderator');
+        $this->middleware('role:admin|analyst');
     }
     public function index()
     {

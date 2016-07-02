@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">价格标准参考列表</h4>
+                <h4 class="modal-title">价格标准参考列表（价格仅供参考，不作为最终价格）</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -24,32 +24,10 @@
                                 <td>一般</td>
                                 <td>10</td>
                                 <td>3</td>
-                                <td>150</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="4">100</td>
-                                <td rowspan="4">一般</td>
-                                <td>11-20</td>
-                                <td>7</td>
                                 <td>200</td>
                             </tr>
                             <tr>
-                                <td>21-30</td>
-                                <td>7</td>
-                                <td>400</td>
-                            </tr>
-                            <tr>
-                                <td>31-40</td>
-                                <td>10</td>
-                                <td>500</td>
-                            </tr>
-                            <tr>
-                                <td>41-50</td>
-                                <td>10</td>
-                                <td>600</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="4">100-500</td>
+                                <td rowspan="4">100</td>
                                 <td rowspan="4">一般</td>
                                 <td>11-20</td>
                                 <td>7</td>
@@ -63,15 +41,15 @@
                             <tr>
                                 <td>31-40</td>
                                 <td>10</td>
-                                <td>600</td>
+                                <td>700</td>
                             </tr>
                             <tr>
                                 <td>41-50</td>
                                 <td>10</td>
-                                <td>700</td>
+                                <td>900</td>
                             </tr>
                             <tr>
-                                <td rowspan="4">501-1000</td>
+                                <td rowspan="4">100-500</td>
                                 <td rowspan="4">一般</td>
                                 <td>11-20</td>
                                 <td>7</td>
@@ -85,59 +63,59 @@
                             <tr>
                                 <td>31-40</td>
                                 <td>10</td>
-                                <td>700</td>
+                                <td>800</td>
                             </tr>
                             <tr>
                                 <td>41-50</td>
                                 <td>10</td>
+                                <td>1000</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="4">501-1000</td>
+                                <td rowspan="4">一般</td>
+                                <td>11-20</td>
+                                <td>7</td>
+                                <td>600</td>
+                            </tr>
+                            <tr>
+                                <td>21-30</td>
+                                <td>7</td>
                                 <td>800</td>
+                            </tr>
+                            <tr>
+                                <td>31-40</td>
+                                <td>10</td>
+                                <td>1000</td>
+                            </tr>
+                            <tr>
+                                <td>41-50</td>
+                                <td>10</td>
+                                <td>1200</td>
                             </tr>
                             <tr>
                                 <td rowspan="4">1001-2000</td>
                                 <td rowspan="4">一般</td>
                                 <td>11-20</td>
                                 <td>7</td>
-                                <td>500</td>
+                                <td>700</td>
                             </tr>
                             <tr>
                                 <td>21-30</td>
                                 <td>7</td>
-                                <td>600</td>
-                            </tr>
-                            <tr>
-                                <td>31-40</td>
-                                <td>10</td>
-                                <td>700</td>
-                            </tr>
-                            <tr>
-                                <td>41-50</td>
-                                <td>10</td>
-                                <td>800</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="4">2001-5000</td>
-                                <td rowspan="4">一般</td>
-                                <td>11-20</td>
-                                <td>7</td>
-                                <td>600</td>
-                            </tr>
-                            <tr>
-                                <td>21-30</td>
-                                <td>7</td>
-                                <td>700</td>
-                            </tr>
-                            <tr>
-                                <td>31-40</td>
-                                <td>10</td>
-                                <td>800</td>
-                            </tr>
-                            <tr>
-                                <td>41-50</td>
-                                <td>10</td>
                                 <td>900</td>
                             </tr>
                             <tr>
-                                <td rowspan="4">5001-10000</td>
+                                <td>31-40</td>
+                                <td>10</td>
+                                <td>1100</td>
+                            </tr>
+                            <tr>
+                                <td>41-50</td>
+                                <td>10</td>
+                                <td>1300</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="4">2001-5000</td>
                                 <td rowspan="4">一般</td>
                                 <td>11-20</td>
                                 <td>7</td>
@@ -156,14 +134,36 @@
                             <tr>
                                 <td>41-50</td>
                                 <td>10</td>
-                                <td>1500</td>
+                                <td>1400</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="4">5001-10000</td>
+                                <td rowspan="4">一般</td>
+                                <td>11-20</td>
+                                <td>7</td>
+                                <td>1200</td>
+                            </tr>
+                            <tr>
+                                <td>21-30</td>
+                                <td>7</td>
+                                <td>1400</td>
+                            </tr>
+                            <tr>
+                                <td>31-40</td>
+                                <td>10</td>
+                                <td>1600</td>
+                            </tr>
+                            <tr>
+                                <td>41-50</td>
+                                <td>10</td>
+                                <td>2000</td>
                             </tr>
                             <tr>
                                 <td rowspan="2">10000以上</td>
                                 <td rowspan="2">一般</td>
                                 <td>11-20</td>
                                 <td>7</td>
-                                <td>900</td>
+                                <td>1300</td>
                             </tr>
                             <tr>
                                 <td>20以上</td>

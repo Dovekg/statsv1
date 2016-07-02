@@ -122,7 +122,7 @@ class TasksController extends Controller
                 ]);
             }
         }
-        alert()->success('任务已顺利提交给分析员！', '成功');
+        alert()->success('任务已顺利提交给分析员，等待认领中！', '成功');
         return redirect('/dashboard/tasks/' . $id );
     }
 

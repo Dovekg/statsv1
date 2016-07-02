@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Requests\AnaCreateRequest;
 use App\User;
 use Validator;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Mpociot\Teamwork\Facades\Teamwork;
+use Bican\Roles\Models\Role;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -68,5 +73,29 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function anaRegister($token)
+    {
+        $invite = Teamwork::getInviteFromAcceptToken($token);
+        if (!$invite) {
+            abort(404);
+        }
+        return view('auth.ana_register', compact('token'));
+    }
+
+    public function postAnaRegister(AnaCreateRequest $request, $token)
+    {
+        $user = User::Create([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'phone' => $request->get('phone'),
+            'password' => bcrypt($request->get('password'))
+        ]);
+        $user->attachRole(Role::where('slug', 'analyst')->first()->id);
+
+        Auth::guard()->login($user);
+
+        return redirect()->to('/teams/accept/' . $token);
     }
 }

@@ -7,17 +7,18 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Avatar;
 use Bican\Roles\Traits\HasRoleAndPermission;
 use Bican\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
+use Mpociot\Teamwork\Traits\UserHasTeams;
 
 class User extends Authenticatable implements HasRoleAndPermissionContract
 {
-    use HasRoleAndPermission;
+    use HasRoleAndPermission, UserHasTeams;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password'
+        'name', 'email', 'password', 'phone'
     ];
     protected $appends = ['avatar'];
 

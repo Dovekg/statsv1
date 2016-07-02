@@ -163,6 +163,7 @@ return [
         Overtrue\LaravelPinyin\ServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Bican\Roles\RolesServiceProvider::class,
+        Mpociot\Teamwork\TeamworkServiceProvider::class
     ],
 
     /*
