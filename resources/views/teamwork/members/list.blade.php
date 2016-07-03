@@ -4,7 +4,7 @@
     <div class="content-wrapper">
         <div class="panel panel-flat border-left-info-600">
             <div class="panel-heading">
-                <h6 class="panel-title">"{{$team->name}}" 的队员</h6>
+                <h6 class="panel-title">"{{$team->name}}" 的组员</h6>
                 <div class="heading-elements">
                     <a href="{{route('teams.index')}}" class="btn btn-sm btn-default pull-right">
                         <i class="icon-arrow-left5"></i> 返回
@@ -18,12 +18,20 @@
                     <thead>
                     <tr>
                         <th>用户名</th>
+                        <th>角色</th>
                         <th>操作</th>
                     </tr>
                     </thead>
                     @foreach($team->users AS $user)
                         <tr>
                             <td>{{$user->name}}</td>
+                            <td>
+                                @if($user->isOwnerOfTeam($team))
+                                    <span class="label label-success">组长</span>
+                                @else
+                                    <span class="label label-primary">组员</span>
+                                @endif
+                            </td>
                             <td>
                                 @if(auth()->user()->isOwnerOfTeam($team))
                                     @if(auth()->user()->getKey() !== $user->getKey())
@@ -42,7 +50,7 @@
         </div>
         <div class="panel panel-flat border-left-warning-600">
             <div class="panel-heading">
-                <h6 class="panel-title">邀请中成员</h6>
+                <h6 class="panel-title">邀请中组员</h6>
                 </div>
             <div class="panel-body">
                 <div class="table-responsive">
@@ -50,7 +58,7 @@
                     <thead>
                     <tr>
                         <th>邮箱地址</th>
-                        <th>操作</th>
+                        <th>重新发送邀请邮件</th>
                     </tr>
                     </thead>
                     @foreach($team->invites AS $invite)
@@ -58,7 +66,7 @@
                             <td>{{$invite->email}}</td>
                             <td>
                                 <a href="{{route('teams.members.resend_invite', $invite)}}" class="btn btn-sm btn-default">
-                                    <i class="fa fa-envelope-o"></i>重新发送邀请邮件
+                                    <i class="icon-envelop"></i>
                                 </a>
                             </td>
                         </tr>
@@ -79,9 +87,9 @@
                         <form class="form-horizontal" method="post" action="{{route('teams.members.invite', $team)}}">
                             {!! csrf_field() !!}
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label class="col-md-3 control-label">邮箱地址：</label>
+                                <label class="col-md-4 control-label">邮箱地址：</label>
 
-                                <div class="col-md-7">
+                                <div class="col-md-6">
                                     <input type="email" class="form-control" name="email" value="{{ old('email') }}">
 
                                     @if ($errors->has('email'))

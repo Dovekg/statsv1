@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Teamwork;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Mpociot\Teamwork\Exceptions\UserNotInTeamException;
+use App\Http\Requests\TeamStoreRequest;
+use App\Http\Requests\TeamUpdateRequest;
 
 class TeamController extends Controller
 {
@@ -40,7 +42,7 @@ class TeamController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TeamStoreRequest $request)
     {
         $teamModel = config('teamwork.team_model');
 
@@ -97,7 +99,7 @@ class TeamController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TeamUpdateRequest $request, $id)
     {
         $teamModel = config('teamwork.team_model');
 

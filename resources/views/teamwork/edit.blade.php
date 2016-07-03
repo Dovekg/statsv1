@@ -6,7 +6,7 @@
                 <ul class="breadcrumb">
                     <li><a href="/"><i class="icon-home2 position-left"></i> 主页</a></li>
                     <li><a href="/dashboard">管理面板</a></li>
-                    <li class="active">更改团队</li>
+                    <li class="active">更改组名</li>
                 </ul>
 
             </div>
@@ -14,7 +14,7 @@
 
         <div class="page-header-content">
             <div class="page-title">
-                <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">团队</span> - 更改团队名称</h4>
+                <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">小组</span> - 更改组名</h4>
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-10 col-md-offset-1">
-                                <h5 class="panel-title">更改{{$team->name}}名称</h5>
+                                <h5 class="panel-title">更改小组： {{$team->name}}</h5>
                             </div>
                         </div>
                     </div>

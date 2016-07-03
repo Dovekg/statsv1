@@ -6,7 +6,7 @@
                 <ul class="breadcrumb">
                     <li><a href="/"><i class="icon-home2 position-left"></i> 主页</a></li>
                     <li><a href="/dashboard">管理面板</a></li>
-                    <li class="active">创建自己的团队</li>
+                    <li class="active">创建小组</li>
                 </ul>
 
             </div>
@@ -14,7 +14,7 @@
 
         <div class="page-header-content">
             <div class="page-title">
-                <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">团队</span> - 创建自己的团队</h4>
+                <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">小组</span> - 创建小组</h4>
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-10 col-md-offset-1">
-                                <h5 class="panel-title">创建自己的新团队</h5>
+                                <h5 class="panel-title">创建自己的小组</h5>
                             </div>
                         </div>
                     </div>
