@@ -79,7 +79,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center">
                 <h1>分析团队</h1>
-                <p>团队虽小，人才俱全! 同时，也期待您的加入！有意者可以<a href="mailto:hr@scistats.com"><i class="fa fa-envelope" style="margin-left:10px;"></i>发邮件给我们</a></p>
+                <p>团队虽小，人才俱全! 同时，也期待您的加入！有意者可以<a href="mailto:service@scistats.com"><i class="fa fa-envelope" style="margin-left:10px;"></i>发邮件给我们</a></p>
             </div>
         </div>
     </div>

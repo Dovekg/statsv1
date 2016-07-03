@@ -20,6 +20,26 @@ body {
   background: #91D8EA;
 }
 
+
+.new-task a {
+	font-size: 16px;
+	color: #337ab7;
+	font-weight: 400;
+	padding-right: 12px;
+}
+
+.new-task a:hover {
+	text-decoration: none;
+	border: 1px solid #3291f6;
+	border-radius: 5px;
+	color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    padding: 5px 10px;
+}
+.new-task a i {
+	margin-right: 8px;
+}
 .container {
 	margin: 0 auto;
 	max-width: 1024px;

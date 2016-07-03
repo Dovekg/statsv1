@@ -31,6 +31,7 @@
         <a href="/" class="logo"></a>
         <nav class="navbar">
             <ul class="nav-links">
+            <li class="new-task"><a href="/dashboard/tasks/create"><i class="fa fa-file"></i>提交需求</a></li>
                 @if(!Auth::user())
                     <li><a href="/login">登陆</a></li>
                     <li><a href="/register">注册</a></li>
@@ -51,7 +52,7 @@
                     <p class="lead" style="font-size: 20px;line-height: 2em;letter-spacing: 1px;">scistats初期旨在解决医学数据的管理与分析的问题，从此不再为数据的繁杂、不精确担心。把费神伤脑的<strong>统计分析</strong>交给scistats</p>
                 </div>
                 <div class="head-btn">
-                    <a href="/dashboard/tasks/create" class="btn btn-primary"><i class="fa fa-paper-plane-o">&nbsp;&nbsp;&nbsp;&nbsp;</i>开始体验</a>
+                    <a href="/dashboard/tasks/create" class="btn btn-primary"><i class="fa fa-paper-plane-o">&nbsp;&nbsp;&nbsp;&nbsp;</i>提交分析需求</a>
                 </div>
             </div>
         </div>
