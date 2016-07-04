@@ -73,31 +73,6 @@
             </div>
         </div>
     </section> 
-
-    <section id="team">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 text-center">
-                <h1>分析团队</h1>
-                <p>团队虽小，人才俱全! 同时，也期待您的加入！有意者可以<a href="mailto:service@scistats.com"><i class="fa fa-envelope" style="margin-left:10px;"></i>发邮件给我们</a></p>
-            </div>
-        </div>
-    </div>
-    <!-- Swiper -->
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image:url(/images/team/team-mem11.png);"><p class="name">张凯歌<span class="role">Leader</span></p></div>
-            <div class="swiper-slide" style="background-image:url(/images/team/team-mem22.png)"><p class="name">徐浩<span class="role">Analyzer</span></p></div>
-            <div class="swiper-slide" style="background-image:url(/images/team/team-mem33.png)"><p class="name">陈楠<span class="role">Analyzer</span></p></div>
-            <div class="swiper-slide" style="background-image:url(/images/team/team-mem44.png)"><p class="name">陈修闯<span class="role">Analyzer</span></p></div>
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-    </div>
-            
-        
-
-    </section>
     
     <section id="footer">
         <div class="container">
@@ -113,16 +88,6 @@
 @stop
 
 @section('script')
-<script type="text/javascript" src="/js/swiper.min.js"></script>
-<script>
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        slidesPerView: 3,
-        paginationClickable: true,
-        spaceBetween: 30,
-        freeMode: true
-    });
-</script>
 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1259582980'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/stat.php%3Fid%3D1259582980%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
 
 @stop
