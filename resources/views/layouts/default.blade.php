@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="医学统计，科学统计，统计师">
     <link rel="icon" href="">
+    <meta property="qc:admins" content="16533731726331341436375" />
 
     <title>scistats -- 你的科学统计师</title>
 
