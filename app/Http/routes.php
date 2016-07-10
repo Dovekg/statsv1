@@ -11,17 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+
+Route::get('/', 'HomeController@index');
+Route::get('/services', 'HomeController@services');
+Route::get('/faq', 'HomeController@faq');
+Route::get('/contact', 'HomeController@contact');
+
+Route::get('/home', 'HomeController@home');
+Route::resource('messages', 'MessagesController');
 Route::auth();
+
 
 Route::get('/analyst/register/{token}', ['as' => 'analyst_register', 'uses' => 'Auth\AuthController@anaRegister']);
 Route::post('/analyst/register/{token}', 'Auth\AuthController@postAnaRegister');
 Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard'], function () {
 		Route::get('/', 'DashboardController@index');
 		Route::get('/download/{path}', ['as' => 'download.data', 'uses' => 'TasksController@downloadData' ]);
-		Route::patch('/tasks/{id}/close', ['as' => 'dashboard.tasks.close', 'uses' => 'TasksController@close']);
 		Route::patch('/tasks/{id}/claim', ['as' => 'dashboard.tasks.claim', 'uses' => 'TasksController@claim']);
 		Route::patch('/tasks/{id}/complete', ['as' => 'dashboard.tasks.complete', 'uses' => 'TasksController@complete']);
 		Route::patch('/tasks/{id}/bid', ['as' => 'dashboard.tasks.bid', 'uses' => 'TasksController@bid']);

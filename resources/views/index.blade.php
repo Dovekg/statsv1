@@ -1,93 +1,76 @@
-@extends('layouts.default')
+@extends('layouts.app')
 
-
-@section('content')
-@if ($errors->has('email'))
-                <span class="help-block text-danger"><i class="icon-cancel-circle2 position-left"></i> {{ $errors->first('email') }}</span>
-                @endif
-    <section id="secure">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h1>完善的分析服务</h1>
-                </div>
-                <div class="col-md-8">
-                    <p>医学科研数据的分析与统计，包括基础和高级统计分析，数据挖掘，统计图形等。比如T检验，方差分析，秩合分析，卡方检验，meta分析，相关分析，回归分析等。团队成员都承担和参与大型项目的数据统计与分析工作，平台力争覆盖所有高校统计学分析员，为你提供一站式服务
-                   </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="feature">
-        <div class="container">
-            <div class="row title">
-                <div class="col-md-8 col-md-offset-2 text-center">
-                    <h1>我们所能做的</h1>
-                    <p>假如你的研究中出现了以下的问题，那么可以尝试一下我们的帮助，或许能够在科研上助你一臂之力</p>
-                </div>
-            </div>
-            <div class="row feature">
-                <div class="col-md-7">
-                    <h2 class="feature-heading">研究过程总是遇挫 <span class="text-muted">总是问题不断</span></h2>
-                    <p class="lead">统计分析也能够应用到项目设计和开展的各个过程，我们或许能够帮你及时找出出现的问题，及时修正数据的不足</p>
-                </div>
-                <div class="col-md-5">
-                    <img class="feature-image img-responsive center-block" src="/images/fea-1.png" alt="">
-                </div>
-            </div>
-
-            <hr class="feature-divider">
-
-            <div class="row feature">
-                <div class="col-md-7 col-md-push-5">
-                    <h2 class="feature-heading">科研过程总是千头万绪 <span class="text-muted">把握不准方向</span></h2>
-                    <p class="lead">统计分析能够借助假设验证，及时排除错误定论，甚至能够为下一步指明可能方向或发现之前忽视的可能性</p>
-                </div>
-                <div class="col-md-5 col-md-pull-7">
-                    <img class="feature-image img-responsive center-block" src="/images/fea-2.png" alt="">
-                </div>
-            </div>
-            <hr class="feature-divider">
-
-            <div class="row feature">
-                <div class="col-md-7">
-                    <h2 class="feature-heading">高水平研究总是差之毫厘 <span class="text-muted">需要进行结果完善</span></h2>
-                    <p class="lead">定制化的分析模式，使得结果和数据完美的结合，不同的分析方式可能会产生迥异的结论</p>
-                </div>
-                <div class="col-md-5">
-                    <img class="feature-image img-responsive center-block" src="/images/fea-3.png" alt="">
-                </div>
-            </div>
-
-            <hr class="feature-divider">
-
-            <div class="row feature">
-                <div class="col-md-7 col-md-push-5">
-                    <h2 class="feature-heading">墨守陈规总显得封闭陈旧<span class="text-muted">想用新方式加速研究</span></h2>
-                    <p class="lead">7x24小时服务，第一时间验证你所想，拿到你所需</p>
-                </div>
-                <div class="col-md-5 col-md-pull-7">
-                    <img class="feature-image img-responsive center-block" src="/images/fea-4.png" alt="">
-                </div>
-            </div>
-        </div>
-    </section> 
-    
-    <section id="footer">
-        <div class="container">
-             <footer>
-                <span>© Origeno 成都元因科技 保留一些权利</span> <span class="pull-right">
-                <!-- <a href="/privacy">隐私保护</a> · <a href="/terms">使用条款</a> -->
-                </span>
-            </footer>
-        </div>
-       
-    </section>
-    
+@section('style')
+	<style type="text/css">
+		.navbar {
+			border-bottom: none;
+		}
+	</style>
+	{{-- expr --}}
 @stop
+@section('content')
+<section id="header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-md-push-6">
+				<div class="stats">
+					<img class="stats-illustration" src="/images/stats.png" width="460">
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-6 col-md-pull-6">
+				<div class="headline">
+					<h2 class="title">一站式分析平台</h2>
+					<p class="lead" style="font-size: 20px;line-height: 1.8em;letter-spacing: 1px">Scistats吸纳了多行业，多层次的统计师，构建了一站式数据管理与分析平台，让你从此不再为数据的繁杂担心，真诚为您省时、省力，解放你的工作！</p>
+				</div>
+				<div class="head-btn" style="margin-top: -0.5em">
+					<a href="/dashboard/tasks/create" class="btn btn-primary"><i class="fa fa-paper-plane-o">&nbsp;&nbsp;&nbsp;&nbsp;</i>提交分析需求</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="white-fade"></div>
+</section>
 
-@section('script')
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1259582980'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/stat.php%3Fid%3D1259582980%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+<!-- STEPS PATH BLOCK -->
+<section id="steps-path">
+	<div class="container">
+		<div class="sep-bottom text-center">
+			<h2 class="title">统计分析竟能方便</h2>
+			<p class="desc-text">平台入驻了上百位统计师，随时随地为您服务，您可以放心无忧的提交您的需求，来看看你的数据都经历了那些过程</p>
+		</div>
+		
+		<ul class="step-path-block">
+			<li>
+				<div class="step-img"><img src="/images/step1.png" class="screen" alt=""></div>
+				<div class="step-text">
+					<h3 class="title">需求提交</h3>
+					<p>你只需要说明你的分析目的并把你的数据整理好并通过网站提交给我们</p>
+				</div>
+			</li>
+			<li class="reverse">
+				<div class="step-img"><img src="/images/step2.png" class="screen" alt=""></div>
+				<div class="step-text">
+					<h3 class="title">统计师抢单</h3>
+					<p>需求一旦提交，统计师便可得到通知，随时随地方便的完成订单领取并安排好交付时间</p>
+				</div>
+			</li>
+			<li>
+				<div class="step-img"><img src="/images/step3.png" class="screen" alt=""></div>
+				<div class="step-text">
+					<h3 class="title">实时交流</h3>
+					<p>在分析过程中，你可以通过平台方便及时的了解到分析进度，并与统计师交流分析过程出现的问题</p>
+				</div>
+			</li>
+			<li class="reverse">
+				<div class="step-img"><img src="/images/step4.png" class="screen" alt=""></div>
+				<div class="step-text">
+					<h3 class="title">结果交付</h3>
+					<p>一旦统计师完成分析并经过质量校验后，平台便会通知你完成付款并接收报告，在你对结果满意后，劳动报酬便会支付给统计师</p>
+				</div>
+			</li>
+		</ul>
+		
+	</div>
+</section>
 
 @stop

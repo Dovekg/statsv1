@@ -2,19 +2,15 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>scistats -- 你的科学统计师</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="医学统计，科学统计，统计师">
+    <meta property="qc:admins" content="1653373534341436375" />
+    <link rel="icon" href="">
 
-	<!-- Global stylesheets -->
-	<!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
-	<link href="/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
-	<link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
-	<link href="/assets/css/core.css" rel="stylesheet" type="text/css">
-	<link href="/assets/css/components.css" rel="stylesheet" type="text/css">
-	<link href="/assets/css/colors.css" rel="stylesheet" type="text/css"> -->
-	<!-- /global stylesheets -->
-	<!-- <link rel="stylesheet" href="/css/sweetalert.css"> -->
+    <title>scistats -- 你的科学统计师</title>
+
 	<link rel="stylesheet" type="text/css" href="/css/all.css">
 	@yield('styles')
 </head>
@@ -111,6 +107,7 @@
 
 
 	<script type="text/javascript" src="/js/all.js"></script>
+	@include('partials.cnzzscript')
 	@include('sweet::alert')
 	@yield('scripts')
 

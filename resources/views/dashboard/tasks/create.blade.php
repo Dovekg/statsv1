@@ -46,7 +46,7 @@
                                             <option value="{{ $method->name }}">{{ $method->name }}</option>
                                         @endforeach
                                     </select>
-                                    <span class="help-block">你可以选择已有的方法，也可以通过"输入+回车"添加其他方法</span>
+                                    <span class="help-block">选择或者输入你想使用的分析方法</span>
                                 </div>
 
                                 <div class="form-group">
@@ -55,6 +55,8 @@
                                         <option value=""></option>
                                         <option value="sas">SAS</option>
                                         <option value="spss">SPSS</option>
+                                        <option value="r">R</option>
+                                        <option value="stata">STATA</option>
                                     </select>
                                 </div>
 
@@ -141,17 +143,5 @@
 @stop
 
 @section('scripts')
-    <!-- Theme JS files -->
-    <!-- <script type="text/javascript" src="/assets/js/plugins/loaders/pace.min.js"></script> -->
-    <!-- <script type="text/javascript" src="/assets/js/plugins/loaders/blockui.min.js"></script> -->
-
-
-    <!-- <script type="text/javascript" src="/assets/js/plugins/forms/selects/select2.min.js"></script> -->
-    <!-- <script type="text/javascript" src="/assets/js/plugins/forms/styling/uniform.min.js"></script> -->
-
-    <!-- <script type="text/javascript" src="/assets/js/pages/form_layouts.js"></script> -->
-    <!-- <script type="text/javascript" src="/assets/js/core/libraries/jquery_ui/interactions.min.js"></script> -->
-    <!-- <script type="text/javascript" src="/assets/js/pages/form_select2.js"></script> -->
-    <!-- /theme JS files -->
 
 @stop
