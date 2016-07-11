@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 @section('page-header')
     <div class="page-header">
         <div class="breadcrumb-line">
