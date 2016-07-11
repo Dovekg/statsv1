@@ -8,7 +8,6 @@
         </a>
         
         <div class="collapse navbar-toggleable-sm" id="navbar-collapse">
-            @if (Auth::user())
             <ul class="nav navbar-nav pull-right">
                 <li class="nav-item switcher">
                     <a class="btn btn-primary" href="{{ route('dashboard.tasks.create') }}" role="button">
@@ -16,7 +15,6 @@
                     </a>
                 </li>
             </ul>
-            @endif
             <ul class="nav navbar-nav pull-right">
                 <li class="nav-item"><a href="/" class="nav-link">主页</a></li>
                 <li class="nav-item"><a href="/services" class="nav-link">服务</a></li>
@@ -38,13 +36,13 @@
                         <h6 class="dropdown-header">常规</h6>
                         <a class="dropdown-item" href="{{ url('/login') }}">登录</a>
                         <a class="dropdown-item" href="{{ url('/register') }}">注册</a>
-                        <div class="dropdown-divider"></div>
+                        {{-- <div class="dropdown-divider"></div>
                         <h6 class="dropdown-header">社交账号</h6>
                         <ul class="social-icons">
                             <li class="social-icon"><a href="/"><i class="fa fa-qq" style="color: #00a0d6"></a></i></li>
                             <li class="social-icon"><a href="/"><i class="fa fa-weixin" style="color: #51c332"></a></i></li>
                             <li class="social-icon"><a href="/"><i class="fa fa-weibo" style="color: #e3272b"></a></i></li>
-                        </ul>
+                        </ul> --}}
                     </div>
                     @endif
                     

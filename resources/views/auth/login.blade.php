@@ -51,7 +51,7 @@
 
 			<div class="content-divider text-muted form-group"><span>还没有账号？</span></div>
 			<a href="{{ url('/register')}}" class="btn btn-default btn-block content-group">注册</a>
-			<span class="help-block text-center no-margin">继续表示你已经阅读了我们的<a href="#">用户协议</a></a></span>
+			{{-- <span class="help-block text-center no-margin">继续表示你已经阅读了我们的<a href="#">用户协议</a></a></span> --}}
 		</div>
 	</form>
 	<!-- /advanced login -->
