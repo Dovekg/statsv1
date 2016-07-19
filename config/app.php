@@ -163,7 +163,8 @@ return [
         Overtrue\LaravelPinyin\ServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Bican\Roles\RolesServiceProvider::class,
-        Mpociot\Teamwork\TeamworkServiceProvider::class
+        Mpociot\Teamwork\TeamworkServiceProvider::class,
+        Overtrue\LaravelSocialite\ServiceProvider::class,
     ],
 
     /*
@@ -214,6 +215,7 @@ return [
         'Html'      => Collective\Html\HtmlFacade::class,
         'Avatar'    => Laravolt\Avatar\Facade::class,
         'Alert'     => UxWeb\SweetAlert\SweetAlert::class,
+        'Socialite' => Overtrue\LaravelSocialite\Socialite::class,
     ],
 
 ];

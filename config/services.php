@@ -38,5 +38,15 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+    'qq' => [
+        'client_id'     => '101333008',
+        'client_secret' => '066adfd18bd45760feb4d56ca8ab6347',
+        'redirect'      => 'http://scistats.com'
+    ],
+    'wechat' => [
+        'client_id'     => 'wx7488f0a8bd1420da',
+        'client_secret' => 'd1dd885f6530213f8543b9150f84e721',
+        'redirect'      => 'http://statsv1.dev/socialite/callback.php'
+    ]
 
 ];

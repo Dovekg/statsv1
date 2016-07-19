@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Mpociot\Teamwork\Facades\Teamwork;
 use Bican\Roles\Models\Role;
 use Illuminate\Support\Facades\Auth;
+use Socialite;
 
 class AuthController extends Controller
 {
@@ -97,5 +98,26 @@ class AuthController extends Controller
         Auth::guard()->login($user);
 
         return redirect()->to('/teams/accept/' . $token);
+    }
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProvider($name)
+    {
+        return Socialite::driver($name)->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback($name)
+    {
+        $user = Socialite::driver($name)->user();
+
+        // $user->token;
     }
 }

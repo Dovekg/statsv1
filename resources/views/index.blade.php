@@ -35,7 +35,7 @@
 <section id="steps-path">
 	<div class="container">
 		<div class="sep-bottom text-center">
-			<h2 class="title">统计分析竟能方便</h2>
+			<h2 class="title">统计分析如此方便</h2>
 			<p class="desc-text">平台入驻了上百位统计师，随时随地为您服务，您可以放心无忧的提交您的需求，来看看你的数据都经历了那些过程</p>
 		</div>
 		

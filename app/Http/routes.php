@@ -20,6 +20,8 @@ Route::get('/contact', 'HomeController@contact');
 Route::get('/home', 'HomeController@home');
 Route::resource('messages', 'MessagesController');
 Route::auth();
+Route::get('/oauth/{name}', 'Auth\AuthController@redirectToProvider');
+Route::get('/oauth/{name}/callback', 'Auth\AuthController@handleProviderCallback');
 
 
 Route::get('/analyst/register/{token}', ['as' => 'analyst_register', 'uses' => 'Auth\AuthController@anaRegister']);
